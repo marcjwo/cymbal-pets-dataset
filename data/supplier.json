@@ -1,0 +1,146 @@
+[
+  {
+    "supplier_id": 101,
+    "supplier_name": "Oceanic Pet Foods",
+    "contact_name": "Emily Carter",
+    "email": "emily.carter@oceanicpetfoods.com",
+    "phone_number": "555-123-4567",
+    "address": "123 Ocean Drive, Anytown, CA 91234"
+  },
+  {
+    "supplier_id": 102,
+    "supplier_name": "Jungle Bird Supplies",
+    "contact_name": "David Lee",
+    "email": "david.lee@junglebirds.com",
+    "phone_number": "555-987-6543",
+    "address": "456 Parrot Place, Birdville, FL 33456"
+  },
+  {
+    "supplier_id": 103,
+    "supplier_name": "AquaClear Aquatics",
+    "contact_name": "Sarah Jones",
+    "email": "sarah.jones@aquaclear.com",
+    "phone_number": "555-567-8901",
+    "address": "789 Fish Lane, Aquarium City, NY 10001"
+  },
+  {
+    "supplier_id": 104,
+    "supplier_name": "K9 Guardians",
+    "contact_name": "Michael Brown",
+    "email": "michael.brown@k9guardians.com",
+    "phone_number": "555-246-8013",
+    "address": "101 Dogwood Drive, Canineville, TX 75001"
+  },
+  {
+    "supplier_id": 105,
+    "supplier_name": "Fluffy Buns Small Animal Supplies",
+    "contact_name": "Jessica Garcia",
+    "email": "jessica.garcia@fluffybuns.com",
+    "phone_number": "555-369-1215",
+    "address": "212 Bunny Lane, Hopperville, OH 43001"
+  },
+  {
+    "supplier_id": 106,
+    "supplier_name": "Cozy Naps Pet Products",
+    "contact_name": "Christopher Rodriguez",
+    "email": "christopher.rodriguez@cozynaps.com",
+    "phone_number": "555-789-0123",
+    "address": "323 Catnap Crescent, Purrville, GA 30001"
+  },
+  {
+    "supplier_id": 107,
+    "supplier_name": "Playful Pup Products",
+    "contact_name": "Ashley Wilson",
+    "email": "ashley.wilson@playfulpup.com",
+    "phone_number": "555-456-7890",
+    "address": "434 Fetch Lane, Barkville, IL 60001"
+  },
+  {
+    "supplier_id": 108,
+    "supplier_name": "Flea Fighter Solutions",
+    "contact_name": "Matthew Martinez",
+    "email": "matthew.martinez@fleafighter.com",
+    "phone_number": "555-890-1234",
+    "address": "545 Pestfree Parkway, Itchfree, NC 27001"
+  },
+  {
+    "supplier_id": 109,
+    "supplier_name": "Nibble Time Pet Food",
+    "contact_name": "Brian Taylor",
+    "email": "brian.taylor@nibbletime.com",
+    "phone_number": "555-135-7913",
+    "address": "656 Nibble Nook, Munchville, MI 48001"
+  },
+  {
+    "supplier_id": 110,
+    "supplier_name": "Tick Terminator Products",
+    "contact_name": "Angela Anderson",
+    "email": "angela.anderson@tickterminator.com",
+    "phone_number": "555-791-3579",
+    "address": "767 Tickfree Trail, Bitefree, VA 22001"
+  },
+  {
+    "supplier_id": 111,
+    "supplier_name": "Chirpy Seed Bird Food",
+    "contact_name": "Daniel Thomas",
+    "email": "daniel.thomas@chirpyseed.com",
+    "phone_number": "555-124-6802",
+    "address": "878 Birdseed Boulevard, Chirpville, PA 19001"
+  },
+  {
+    "supplier_id": 112,
+    "supplier_name": "Purrfect Perch Cat Trees",
+    "contact_name": "Elizabeth Jackson",
+    "email": "elizabeth.jackson@purrfectperch.com",
+    "phone_number": "555-780-2468",
+    "address": "989 Climbing Lane, Clawville, MD 21001"
+  },
+  {
+    "supplier_id": 113,
+    "supplier_name": "Chew-tastic! Dog Toys",
+    "contact_name": "James White",
+    "email": "james.white@chewtastic.com",
+    "phone_number": "555-248-0136",
+    "address": "1000 Chew Street, Gnawville, CA 94001"
+  },
+  {
+    "supplier_id": 114,
+    "supplier_name": "Shiny Coat Pet Grooming",
+    "contact_name": "Maria Harris",
+    "email": "maria.harris@shinycoat.com",
+    "phone_number": "555-360-1247",
+    "address": "1111 Grooming Lane, Sparkle City, NV 89001"
+  },
+  {
+    "supplier_id": 115,
+    "supplier_name": "Happy Birds Aviary",
+    "contact_name": "Kevin Martin",
+    "email": "kevin.martin@happybirdsaviary.com",
+    "phone_number": "555-481-3690",
+    "address": "1222 Bird Haven, Wingville, OR 97001"
+  },
+  {
+    "supplier_id": 116,
+    "supplier_name": "Fin-tastic! Fish Food",
+    "contact_name": "Laura Thompson",
+    "email": "laura.thompson@fintastic.com",
+    "phone_number": "555-902-4813",
+    "address": "1333 Fin Lane, Scalyville, WA 98001"
+  },
+  {
+    "supplier_id": 117,
+    "supplier_name": "Squeak-tastic! Dog Toys",
+    "contact_name": "Anthony Garcia",
+    "email": "anthony.garcia@squeaktastic.com",
+    "phone_number": "555-013-6924",
+    "address": "1444 Squeak Street, Barkland, CO 80001"
+  },
+  {
+    "supplier_id": 118,
+    "supplier_name": "Purr-adise Cat Products",
+    "contact_name": "Linda Rodriguez",
+    "email": "linda.rodriguez@purr-adise.com",
+    "phone_number": "555-692-4013",
+    "address": "1555 Purr Place, Meowtown, FL 32001"
+  }
+]
