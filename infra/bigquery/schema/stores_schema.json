@@ -1,0 +1,22 @@
+[
+  { "name": "store_id", "type": "INTEGER", "mode": "REQUIRED" },
+  { "name": "store_name", "type": "STRING", "mode": "REQUIRED" },
+  { "name": "location", "type": "STRING", "mode": "REQUIRED" },
+  { "name": "latitude", "type": "FLOAT", "mode": "REQUIRED" },
+  { "name": "longitude", "type": "FLOAT", "mode": "REQUIRED" },
+  {
+    "name": "opening_hours",
+    "type": "RECORD",
+    "mode": "NULLABLE",
+    "fields": [
+      { "name": "Monday", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "Tuesday", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "Wednesday", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "Thursday", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "Friday", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "Saturday", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "Sunday", "type": "STRING", "mode": "NULLABLE" }
+    ]
+  },
+  { "name": "manager_id", "type": "INTEGER", "mode": "NULLABLE" }
+]

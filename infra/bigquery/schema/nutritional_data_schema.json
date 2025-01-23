@@ -1,0 +1,17 @@
+[
+  { "name": "food_id", "type": "INTEGER", "mode": "REQUIRED" },
+  { "name": "food_name", "type": "STRING", "mode": "REQUIRED" },
+  {
+    "name": "nutritional_info",
+    "type": "RECORD",
+    "mode": "NULLABLE",
+    "fields": [
+      { "name": "calories_per_serving", "type": "INTEGER", "mode": "NULLABLE" },
+      { "name": "ingredients", "type": "STRING", "mode": "REPEATED" },
+      { "name": "fiber_content", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "protein_content", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "vitamin_c_content", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "calories_per_treat", "type": "INTEGER", "mode": "NULLABLE" }
+    ]
+  }
+]

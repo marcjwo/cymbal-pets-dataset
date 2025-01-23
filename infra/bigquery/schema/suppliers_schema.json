@@ -1,0 +1,8 @@
+[
+  { "name": "supplier_id", "type": "INTEGER", "mode": "REQUIRED" },
+  { "name": "supplier_name", "type": "STRING", "mode": "REQUIRED" },
+  { "name": "contact_name", "type": "STRING", "mode": "REQUIRED" },
+  { "name": "email", "type": "STRING", "mode": "REQUIRED" },
+  { "name": "phone_number", "type": "STRING", "mode": "REQUIRED" },
+  { "name": "address", "type": "STRING", "mode": "REQUIRED" }
+]
