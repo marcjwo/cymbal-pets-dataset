@@ -330,22 +330,22 @@ class PetProfile:
     pet_type: str = field(init=False)
     age: int = field(init=False)
     weight: int = field(init=False)
-    activity_level:str = field(init=False)
+    activity_level: str = field(init=False)
     dietary_needs: str = field(init=False)
-
 
     def __post_init__(self):
         self.pet_name = fake.first_name()
-        pet_type = ["Cat","Dog","Fish","Bird","Reptile","Other"]
+        pet_type = ["Cat", "Dog", "Fish", "Bird", "Reptile", "Other"]
         self.pet_type = random.choice(pet_type)
         self.age = random.randint(1, 10)
         self.weight = random.randint(1, 20)
-        activity_level = ["Low","Medium","High"]
+        activity_level = ["Low", "Medium", "High"]
         self.activity_level = random.choice(activity_level)
         self.dietary_needs = fake.sentence(nb_words=10)
 
 
 # ===== GENERATION FUNCTIONS =======================================================
+
 
 def generate_pet_profiles(customers: list, num_of_pet_profiles: int):
     pet_profiles = []
@@ -515,7 +515,9 @@ def main(
     print("Generated " + str(len(nutritional_data)) + " nutritional data successfully")
     print("Generated " + str(len(customers)) + " customers data successfully")
     print("Generating pet profiles data")
-    pet_profiles = generate_pet_profiles(customers=customers, num_of_pet_profiles=(len(customers)/12))
+    pet_profiles = generate_pet_profiles(
+        customers=customers, num_of_pet_profiles=(round(len(customers) / 12))
+    )
     print("Generated " + str(len(pet_profiles)) + " pet profiles data successfully")
     print("Generating customer service data")
     num_of_customer_services = round(len(customers) / 12)
@@ -565,7 +567,7 @@ def main(
         "customer_service": customer_service,
         "nutritional_data": nutritional_data,
         "employees": employees,
-        "pet_profiles": pet_profiles
+        "pet_profiles": pet_profiles,
     }
     for name, data in data_list.items():
         file_name = f"{name}.json"
