@@ -322,7 +322,38 @@ class NutritionAgent:
     nutritional_info: dict
 
 
+@dataclass
+class PetProfile:
+    customer_id: int
+    pet_id: int = field(default_factory=itertools.count(start=1).__next__)
+    pet_name: str = field(init=False)
+    pet_type: str = field(init=False)
+    age: int = field(init=False)
+    weight: int = field(init=False)
+    activity_level:str = field(init=False)
+    dietary_needs: str = field(init=False)
+
+
+    def __post_init__(self):
+        self.pet_name = fake.first_name()
+        pet_type = ["Cat","Dog","Fish","Bird","Reptile","Other"]
+        self.pet_type = random.choice(pet_type)
+        self.age = random.randint(1, 10)
+        self.weight = random.randint(1, 20)
+        activity_level = ["Low","Medium","High"]
+        self.activity_level = random.choice(activity_level)
+        self.dietary_needs = fake.sentence(nb_words=10)
+
+
 # ===== GENERATION FUNCTIONS =======================================================
+
+def generate_pet_profiles(customers: list, num_of_pet_profiles: int):
+    pet_profiles = []
+    for _ in range(num_of_pet_profiles):
+        rand_cust = random.choice(customers)
+        pet_profiles.append(PetProfile(customer_id=rand_cust["customer_id"]).__dict__)
+
+    return pet_profiles
 
 
 def generate_customers(num_of_customers: int):
@@ -483,6 +514,9 @@ def main(
     nutritional_data = generate_nutrition_agent(products=products)
     print("Generated " + str(len(nutritional_data)) + " nutritional data successfully")
     print("Generated " + str(len(customers)) + " customers data successfully")
+    print("Generating pet profiles data")
+    pet_profiles = generate_pet_profiles(customers=customers, num_of_pet_profiles=(len(customers)/12))
+    print("Generated " + str(len(pet_profiles)) + " pet profiles data successfully")
     print("Generating customer service data")
     num_of_customer_services = round(len(customers) / 12)
     customer_service = generate_customer_service(
@@ -531,6 +565,7 @@ def main(
         "customer_service": customer_service,
         "nutritional_data": nutritional_data,
         "employees": employees,
+        "pet_profiles": pet_profiles
     }
     for name, data in data_list.items():
         file_name = f"{name}.json"

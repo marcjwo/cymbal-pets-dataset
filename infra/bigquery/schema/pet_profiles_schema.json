@@ -1,0 +1,10 @@
+[
+  { "name": "pet_id", "type": "INTEGER", "mode": "REQUIRED" },
+  { "name": "customer_id", "type": "INTEGER", "mode": "REQUIRED" },
+  { "name": "pet_name", "type": "STRING", "mode": "REQUIRED" },
+  { "name": "pet_type", "type": "STRING", "mode": "REQUIRED" },
+  { "name": "age", "type": "INTEGER", "mode": "REQUIRED" },
+  { "name": "weight", "type": "INTEGER", "mode": "REQUIRED" },
+  { "name": "activity_level", "type": "STRING", "mode": "REQUIRED" },
+  { "name": "dietary_needs", "type": "STRING", "mode": "REQUIRED" }
+]
