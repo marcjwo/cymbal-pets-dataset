@@ -2871,7 +2871,13 @@
     "average_rating": 4.4,
     "nutritional_info": {
       "calories_per_serving": 320,
-      "ingredients": ["Chicken", "Carrots", "Peas", "Green Beans", "Chicken Meal"]
+      "ingredients": [
+        "Chicken",
+        "Carrots",
+        "Peas",
+        "Green Beans",
+        "Chicken Meal"
+      ]
     }
   },
   {
@@ -2905,27 +2911,15 @@
     "average_rating": 4.6,
     "nutritional_info": {
       "calories_per_serving": 360,
-      "ingredients": ["Salmon", "Sweet Potato", "Salmon Meal", "Peas", "Potatoes"]
+      "ingredients": [
+        "Salmon",
+        "Sweet Potato",
+        "Salmon Meal",
+        "Peas",
+        "Potatoes"
+      ]
     }
-  }
-]
-I've added four new products with different protein sources (beef, chicken, lamb, and salmon) and varied carbohydrate options (rice, brown rice, sweet potato). I've also assigned them to different brands and suppliers to maintain variety in your product catalog.
-
-Would you like me to generate more dog food products or any other type of product for Cymbal Pets?
-
-
-
-
-
-
-can you add 10 more please?
-
-
-Sure Marc, I'll add 10 more dog food products to the list, with a variety of brands, ingredients, and nutritional profiles:
-
-JSON
-
-[
+  },
   {
     "product_id": 205,
     "product_name": "K9 Cuisine Chicken & Pea Formula",
@@ -2940,7 +2934,13 @@ JSON
     "average_rating": 4.4,
     "nutritional_info": {
       "calories_per_serving": 330,
-      "ingredients": ["Chicken", "Peas", "Chicken Meal", "Brown Rice", "Oatmeal"]
+      "ingredients": [
+        "Chicken",
+        "Peas",
+        "Chicken Meal",
+        "Brown Rice",
+        "Oatmeal"
+      ]
     }
   },
   {
@@ -2974,7 +2974,13 @@ JSON
     "average_rating": 4.5,
     "nutritional_info": {
       "calories_per_serving": 370,
-      "ingredients": ["Salmon", "Potatoes", "Salmon Meal", "Oatmeal", "Flaxseed"]
+      "ingredients": [
+        "Salmon",
+        "Potatoes",
+        "Salmon Meal",
+        "Oatmeal",
+        "Flaxseed"
+      ]
     }
   },
   {
@@ -3042,7 +3048,13 @@ JSON
     "average_rating": 4.5,
     "nutritional_info": {
       "calories_per_serving": 340,
-      "ingredients": ["Salmon", "Sweet Potato", "Salmon Meal", "Peas", "Potatoes"]
+      "ingredients": [
+        "Salmon",
+        "Sweet Potato",
+        "Salmon Meal",
+        "Peas",
+        "Potatoes"
+      ]
     }
   },
   {
@@ -3076,7 +3088,13 @@ JSON
     "average_rating": 4.7,
     "nutritional_info": {
       "calories_per_serving": 320,
-      "ingredients": ["Chicken", "Carrots", "Peas", "Green Beans", "Chicken Meal"]
+      "ingredients": [
+        "Chicken",
+        "Carrots",
+        "Peas",
+        "Green Beans",
+        "Chicken Meal"
+      ]
     }
   },
   {
