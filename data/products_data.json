@@ -2839,5 +2839,261 @@
       "calories_per_treat": 4,
       "ingredients": ["Salmon", "Ocean Fish", "Cranberry Extract"]
     }
+  },
+  {
+    "product_id": 201,
+    "product_name": "K9 Cuisine Beef & Rice Formula",
+    "category": "Food",
+    "subcategory": "Dog Food",
+    "brand": "K9 Cuisine",
+    "price": 39.99,
+    "description": "Complete and balanced dog food with real beef and wholesome rice, providing essential nutrients for adult dogs.",
+    "image_url": "https://example.com/images/k9-cuisine-beef-rice.jpg",
+    "inventory_level": 80,
+    "supplier_id": 104,
+    "average_rating": 4.5,
+    "nutritional_info": {
+      "calories_per_serving": 350,
+      "ingredients": ["Beef", "Rice", "Chicken Meal", "Brown Rice", "Oatmeal"]
+    }
+  },
+  {
+    "product_id": 202,
+    "product_name": "Pawsome Grub Chicken & Vegetable Medley",
+    "category": "Food",
+    "subcategory": "Dog Food",
+    "brand": "Pawsome Grub",
+    "price": 34.99,
+    "description": "Wholesome dog food with real chicken and a medley of nutritious vegetables, providing a balanced diet for adult dogs.",
+    "image_url": "https://example.com/images/pawsome-grub-chicken-vegetable.jpg",
+    "inventory_level": 70,
+    "supplier_id": 113,
+    "average_rating": 4.4,
+    "nutritional_info": {
+      "calories_per_serving": 320,
+      "ingredients": ["Chicken", "Carrots", "Peas", "Green Beans", "Chicken Meal"]
+    }
+  },
+  {
+    "product_id": 203,
+    "product_name": "Nutri Bites Lamb & Brown Rice Recipe",
+    "category": "Food",
+    "subcategory": "Dog Food",
+    "brand": "Nutri Bites",
+    "price": 44.99,
+    "description": "Premium dog food with real lamb and wholesome brown rice, providing a balanced diet for adult dogs with sensitive stomachs.",
+    "image_url": "https://example.com/images/nutri-bites-lamb-brown-rice.jpg",
+    "inventory_level": 60,
+    "supplier_id": 109,
+    "average_rating": 4.7,
+    "nutritional_info": {
+      "calories_per_serving": 380,
+      "ingredients": ["Lamb", "Brown Rice", "Lamb Meal", "Oatmeal", "Peas"]
+    }
+  },
+  {
+    "product_id": 204,
+    "product_name": "Tail Wagger Salmon & Sweet Potato Delight",
+    "category": "Food",
+    "subcategory": "Dog Food",
+    "brand": "Tail Wagger",
+    "price": 49.99,
+    "description": "Grain-free dog food with real salmon and wholesome sweet potato, providing a delicious and nutritious diet for adult dogs.",
+    "image_url": "https://example.com/images/tail-wagger-salmon-sweet-potato.jpg",
+    "inventory_level": 50,
+    "supplier_id": 117,
+    "average_rating": 4.6,
+    "nutritional_info": {
+      "calories_per_serving": 360,
+      "ingredients": ["Salmon", "Sweet Potato", "Salmon Meal", "Peas", "Potatoes"]
+    }
+  }
+]
+I've added four new products with different protein sources (beef, chicken, lamb, and salmon) and varied carbohydrate options (rice, brown rice, sweet potato). I've also assigned them to different brands and suppliers to maintain variety in your product catalog.
+
+Would you like me to generate more dog food products or any other type of product for Cymbal Pets?
+
+
+
+
+
+
+can you add 10 more please?
+
+
+Sure Marc, I'll add 10 more dog food products to the list, with a variety of brands, ingredients, and nutritional profiles:
+
+JSON
+
+[
+  {
+    "product_id": 205,
+    "product_name": "K9 Cuisine Chicken & Pea Formula",
+    "category": "Food",
+    "subcategory": "Dog Food",
+    "brand": "K9 Cuisine",
+    "price": 37.99,
+    "description": "Complete and balanced dog food with real chicken and wholesome peas, providing essential nutrients for adult dogs.",
+    "image_url": "https://example.com/images/k9-cuisine-chicken-pea.jpg",
+    "inventory_level": 90,
+    "supplier_id": 104,
+    "average_rating": 4.4,
+    "nutritional_info": {
+      "calories_per_serving": 330,
+      "ingredients": ["Chicken", "Peas", "Chicken Meal", "Brown Rice", "Oatmeal"]
+    }
+  },
+  {
+    "product_id": 206,
+    "product_name": "Pawsome Grub Lamb & Rice Delight",
+    "category": "Food",
+    "subcategory": "Dog Food",
+    "brand": "Pawsome Grub",
+    "price": 39.99,
+    "description": "Wholesome dog food with real lamb and nutritious rice, providing a balanced diet for adult dogs.",
+    "image_url": "https://example.com/images/pawsome-grub-lamb-rice.jpg",
+    "inventory_level": 80,
+    "supplier_id": 113,
+    "average_rating": 4.6,
+    "nutritional_info": {
+      "calories_per_serving": 350,
+      "ingredients": ["Lamb", "Rice", "Lamb Meal", "Barley", "Peas"]
+    }
+  },
+  {
+    "product_id": 207,
+    "product_name": "Nutri Bites Salmon & Potato Recipe",
+    "category": "Food",
+    "subcategory": "Dog Food",
+    "brand": "Nutri Bites",
+    "price": 49.99,
+    "description": "Premium dog food with real salmon and wholesome potatoes, providing a balanced diet for adult dogs with sensitive skin.",
+    "image_url": "https://example.com/images/nutri-bites-salmon-potato.jpg",
+    "inventory_level": 70,
+    "supplier_id": 109,
+    "average_rating": 4.5,
+    "nutritional_info": {
+      "calories_per_serving": 370,
+      "ingredients": ["Salmon", "Potatoes", "Salmon Meal", "Oatmeal", "Flaxseed"]
+    }
+  },
+  {
+    "product_id": 208,
+    "product_name": "Tail Wagger Beef & Vegetable Feast",
+    "category": "Food",
+    "subcategory": "Dog Food",
+    "brand": "Tail Wagger",
+    "price": 44.99,
+    "description": "Grain-free dog food with real beef and a feast of nutritious vegetables, providing a delicious and nutritious diet for adult dogs.",
+    "image_url": "https://example.com/images/tail-wagger-beef-vegetable.jpg",
+    "inventory_level": 60,
+    "supplier_id": 117,
+    "average_rating": 4.7,
+    "nutritional_info": {
+      "calories_per_serving": 340,
+      "ingredients": ["Beef", "Carrots", "Peas", "Green Beans", "Beef Meal"]
+    }
+  },
+  {
+    "product_id": 209,
+    "product_name": "Happy Hound Chicken & Rice Kibble",
+    "category": "Food",
+    "subcategory": "Dog Food",
+    "brand": "Happy Hound",
+    "price": 29.99,
+    "description": "Affordable and nutritious dog food with real chicken and wholesome rice, providing a balanced diet for adult dogs.",
+    "image_url": "https://example.com/images/happy-hound-chicken-rice.jpg",
+    "inventory_level": 100,
+    "supplier_id": 115,
+    "average_rating": 4.3,
+    "nutritional_info": {
+      "calories_per_serving": 310,
+      "ingredients": ["Chicken", "Rice", "Chicken Meal", "Barley", "Corn"]
+    }
+  },
+  {
+    "product_id": 210,
+    "product_name": "Top Dog Lamb & Brown Rice Formula",
+    "category": "Food",
+    "subcategory": "Dog Food",
+    "brand": "Top Dog",
+    "price": 39.99,
+    "description": "Premium dog food with real lamb and wholesome brown rice, providing a balanced diet for adult dogs with sensitive stomachs.",
+    "image_url": "https://example.com/images/top-dog-lamb-brown-rice.jpg",
+    "inventory_level": 90,
+    "supplier_id": 102,
+    "average_rating": 4.6,
+    "nutritional_info": {
+      "calories_per_serving": 360,
+      "ingredients": ["Lamb", "Brown Rice", "Lamb Meal", "Oatmeal", "Peas"]
+    }
+  },
+  {
+    "product_id": 211,
+    "product_name": "Prime Paws Salmon & Sweet Potato Recipe",
+    "category": "Food",
+    "subcategory": "Dog Food",
+    "brand": "Prime Paws",
+    "price": 44.99,
+    "description": "Grain-free dog food with real salmon and wholesome sweet potato, providing a delicious and nutritious diet for adult dogs.",
+    "image_url": "https://example.com/images/prime-paws-salmon-sweet-potato.jpg",
+    "inventory_level": 80,
+    "supplier_id": 108,
+    "average_rating": 4.5,
+    "nutritional_info": {
+      "calories_per_serving": 340,
+      "ingredients": ["Salmon", "Sweet Potato", "Salmon Meal", "Peas", "Potatoes"]
+    }
+  },
+  {
+    "product_id": 212,
+    "product_name": "Canine Choice Beef & Rice Kibble",
+    "category": "Food",
+    "subcategory": "Dog Food",
+    "brand": "Canine Choice",
+    "price": 34.99,
+    "description": "Affordable and nutritious dog food with real beef and wholesome rice, providing a balanced diet for adult dogs.",
+    "image_url": "https://example.com/images/canine-choice-beef-rice.jpg",
+    "inventory_level": 70,
+    "supplier_id": 111,
+    "average_rating": 4.4,
+    "nutritional_info": {
+      "calories_per_serving": 330,
+      "ingredients": ["Beef", "Rice", "Beef Meal", "Barley", "Corn"]
+    }
+  },
+  {
+    "product_id": 213,
+    "product_name": "Healthy Hound Chicken & Vegetable Formula",
+    "category": "Food",
+    "subcategory": "Dog Food",
+    "brand": "Healthy Hound",
+    "price": 37.99,
+    "description": "Complete and balanced dog food with real chicken and a medley of nutritious vegetables, providing a balanced diet for adult dogs.",
+    "image_url": "https://example.com/images/healthy-hound-chicken-vegetable.jpg",
+    "inventory_level": 60,
+    "supplier_id": 114,
+    "average_rating": 4.7,
+    "nutritional_info": {
+      "calories_per_serving": 320,
+      "ingredients": ["Chicken", "Carrots", "Peas", "Green Beans", "Chicken Meal"]
+    }
+  },
+  {
+    "product_id": 214,
+    "product_name": "Nutrience Lamb & Brown Rice Recipe",
+    "category": "Food",
+    "subcategory": "Dog Food",
+    "brand": "Nutrience",
+    "price": 49.99,
+    "description": "Premium dog food with real lamb and wholesome brown rice, providing a balanced diet for adult dogs with sensitive stomachs.",
+    "image_url": "https://example.com/images/nutrience-lamb-brown-rice.jpg",
+    "inventory_level": 50,
+    "supplier_id": 116,
+    "average_rating": 4.6,
+    "nutritional_info": {
+      "calories_per_serving": 380,
+      "ingredients": ["Lamb", "Brown Rice", "Lamb Meal", "Oatmeal", "Peas"]
+    }
   }
 ]
