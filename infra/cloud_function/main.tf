@@ -68,6 +68,11 @@ resource "google_cloudfunctions2_function" "default" {
   location    = var.region
   name        = "cymbal_pets_generator_function"
   description = "Python function to create cymbal_pets dataset"
+  timeouts {
+    create = "10m"
+    update = "10m"
+    delete = "10m"
+  }
   build_config {
     runtime     = "python312"
     entry_point = "hello_http"
@@ -82,11 +87,11 @@ resource "google_cloudfunctions2_function" "default" {
     }
   }
   service_config {
-    max_instance_count = 2
+    max_instance_count = 4
     min_instance_count = 0
-    available_memory   = "8Gi"
+    available_memory   = "16Gi"
     timeout_seconds    = 3600
-    available_cpu      = "6"
+    available_cpu      = "8"
     environment_variables = {
       DATASET_ID   = var.dataset_id
       BUCKET_NAME  = google_storage_bucket.gcf-data-bucket.name

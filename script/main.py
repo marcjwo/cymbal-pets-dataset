@@ -1,7 +1,12 @@
+# Location info sources from: https://github.com/dr5hn/countries-states-cities-database
+
 import json, random, typing, itertools, os
-from datetime import date, datetime, timedelta, time
+from datetime import date, datetime, timedelta
 from dataclasses import dataclass, field, InitVar
 from decimal import Decimal
+from itertools import repeat
+import requests
+import calendar
 
 from google.cloud import bigquery, storage
 from faker import Faker
@@ -13,7 +18,6 @@ storage_client = storage.Client()
 # ================================================
 
 # TODO: these should be env variables
-# DATASET_ID = "4711_test_cymbal_pets"
 # BUCKET_NAME = "4711_test_cymbal_pets"
 # DAILY_ORDERS = 2
 # NUM_OF_CUSTOMERS = 100
@@ -26,6 +30,28 @@ DAILY_ORDERS = int(os.getenv("DAILY_ORDERS"))
 NUM_OF_CUSTOMERS = int(os.getenv("NUM_OF_CUSTOMERS"))
 # CYMBAL_PETS_START_DATE = int(os.getenv("START_DATE"))
 # ================================================
+
+CATEGORY_WEIGHTS = {
+    "Food": 0.38,
+    "Toys": 0.25,
+    "Accessories": 0.22,
+    "Health & Wellness": 0.15,
+}
+
+CUSTOMER_SEGMENTS = {
+    "m": {
+        "Food": 0.35,
+        "Toys": 0.30,
+        "Accessories": 0.2,
+        "Health & Wellness": 0.15,
+    },
+    "f": {
+        "Food": 0.40,
+        "Toys": 0.10,
+        "Accessories": 0.25,
+        "Health & Wellness": 0.25,
+    },
+}
 
 
 class DataHandling:
@@ -70,10 +96,8 @@ class DataHandling:
             file_name (str): The name of the JSON file to be saved.
             data_list (list): The Python list to be converted to JSON.
         """
-        # Get the bucket
         bucket = storage_client.bucket(bucket_name)
 
-        # Create a blob object
         blob = bucket.blob(file_name)
 
         # Convert the list to newline-delimited JSON
@@ -84,7 +108,7 @@ class DataHandling:
         # Upload the JSON data to GCS
         blob.upload_from_string(json_data, content_type="application/json")
 
-        print(f"List saved as JSON to gs://{bucket_name}/{file_name}")
+        # print(f"List saved as JSON to gs://{bucket_name}/{file_name}")
 
     def load_gcs_to_bq(
         data_name: str,
@@ -178,7 +202,8 @@ class Product:
 class Store:
     store_id: int
     store_name: str
-    location: str
+    address_state: str
+    address_city: str
     latitude: float
     longitude: float
     opening_hours: dict
@@ -192,18 +217,22 @@ class Supplier:
     contact_name: str
     email: str
     phone_number: str
-    address: str
+    address_state: str
+    address_city: str
+    latitude: float
+    longitude: float
 
 
 @dataclass
 class Customer:
+    address_city: str
+    address_state: str
     customer_id: int = field(default_factory=itertools.count(start=1).__next__)
     first_name: str = field(init=False)
     last_name: str = field(init=False)
     email: str = field(init=False)
     gender: str = field(init=False)
     # address_city: InitVar[typing.Any] = None #TODO: commenting this out, no necessity to make sure the customer comes from the city of the store
-    address_city: str = field(init=False)
     loyalty_member: bool = field(init=False)
 
     def __post_init__(self, address_city=None):
@@ -214,7 +243,7 @@ class Customer:
             self.first_name = fake.first_name_female()
         self.last_name = fake.last_name()
         self.email = f"{self.first_name.lower()}{self.last_name.lower()}@{fake.safe_domain_name()}"
-        self.address_city = fake.city()
+        # self.address_city = fake.city()
         self.loyalty_member = random.choices([True, False], weights=[0.31, 0.69])[0]
 
 
@@ -291,7 +320,7 @@ class OrderItem:
     price: InitVar[Decimal] = None
 
     def __post_init__(self, price: Decimal = None):
-        self.quantity = random.randint(1, 5)
+        self.quantity = random.randint(1, 4)
         self.price = self.quantity * price
 
 
@@ -347,6 +376,22 @@ class PetProfile:
 # ===== GENERATION FUNCTIONS =======================================================
 
 
+def generate_location_data(country_iso3: str):
+    url = "https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/json/countries%2Bstates%2Bcities.json"
+    response = requests.get(url)
+
+    if response.status_code != 200:
+        print("Failed to fetch locationdata.")
+        return None
+
+    data = response.json()
+    country_data = None
+    for c in data:
+        if c["iso3"] == country_iso3:
+            country_data = c
+    return country_data
+
+
 def generate_pet_profiles(customers: list, num_of_pet_profiles: int):
     pet_profiles = []
     for _ in range(num_of_pet_profiles):
@@ -356,25 +401,51 @@ def generate_pet_profiles(customers: list, num_of_pet_profiles: int):
     return pet_profiles
 
 
-def generate_customers(num_of_customers: int):
+def generate_customers(num_of_customers: int, geo_data: dict):
     customers = []
     for i in range(num_of_customers):
-        customers.append(Customer().__dict__)
+        randint_state = random.randint(0, len(geo_data["states"]) - 1)
+        while geo_data["states"][randint_state]["type"] != "state":
+            randint_state = random.randint(0, len(geo_data["states"]) - 1)
+        randint_city = random.randint(
+            0, len(geo_data["states"][randint_state]["cities"]) - 1
+        )
+        customers.append(
+            Customer(
+                address_state=geo_data["states"][randint_state]["name"],
+                address_city=geo_data["states"][randint_state]["cities"][randint_city][
+                    "name"
+                ],
+            ).__dict__
+        )
     return customers
 
 
-def generate_stores():
+def generate_stores(geo_data: dict):
     stores = []
     for store in DataHandling.read_json(
         bucket_name=BUCKET_NAME, file_name="stores_data"
     ):
+        randint_state = random.randint(0, len(geo_data["states"]) - 1)
+        while geo_data["states"][randint_state]["type"] != "state":
+            randint_state = random.randint(0, len(geo_data["states"]) - 1)
+        randint_city = random.randint(
+            0, len(geo_data["states"][randint_state]["cities"]) - 1
+        )
         stores.append(
             Store(
                 store_id=store["store_id"],
                 store_name=store["store_name"],
-                location=store["location"],
-                latitude=store["latitude"],
-                longitude=store["longitude"],
+                address_state=geo_data["states"][randint_state]["name"],
+                address_city=geo_data["states"][randint_state]["cities"][randint_city][
+                    "name"
+                ],
+                latitude=geo_data["states"][randint_state]["cities"][randint_city][
+                    "latitude"
+                ],
+                longitude=geo_data["states"][randint_state]["cities"][randint_city][
+                    "longitude"
+                ],
                 opening_hours=store["opening_hours"],
                 manager_id=store["manager_id"],
             ).__dict__
@@ -407,11 +478,17 @@ def generate_products():
     return products
 
 
-def generate_suppliers():
+def generate_suppliers(geo_data: dict):
     suppliers = []
     for supplier in DataHandling.read_json(
         bucket_name=BUCKET_NAME, file_name="suppliers_data"
     ):
+        randint_state = random.randint(0, len(geo_data["states"]) - 1)
+        while geo_data["states"][randint_state]["type"] != "state":
+            randint_state = random.randint(0, len(geo_data["states"]) - 1)
+        randint_city = random.randint(
+            0, len(geo_data["states"][randint_state]["cities"]) - 1
+        )
         suppliers.append(
             Supplier(
                 supplier_id=supplier["supplier_id"],
@@ -419,7 +496,16 @@ def generate_suppliers():
                 contact_name=supplier["contact_name"],
                 email=supplier["email"],
                 phone_number=supplier["phone_number"],
-                address=supplier["address"],
+                address_state=geo_data["states"][randint_state]["name"],
+                address_city=geo_data["states"][randint_state]["cities"][randint_city][
+                    "name"
+                ],
+                latitude=geo_data["states"][randint_state]["cities"][randint_city][
+                    "latitude"
+                ],
+                longitude=geo_data["states"][randint_state]["cities"][randint_city][
+                    "longitude"
+                ],
             ).__dict__
         )
     return suppliers
@@ -439,19 +525,110 @@ def generate_orders(
     return orders
 
 
-def generate_employees(num_of_employees: int = None):
-    employees = []
-    for _ in range(num_of_employees):
-        employees.append(Employee().__dict__)
-    return employees
+# def generate_order_items(orders: list, products: list, customers: list):
+#     order_items = []
+#     # for order in orders:
+#     #     num_of_items = random.randint(1, 5)
+#     unique_categories = list(set([product['category'] for product in products]))
+#     for order in orders:
+#         customer = next((c for c in customers if c['customer_id'] == order['customer_id']), None)
+
+#         if customer:
+#             gender = customer.get('gender', 'f') # Default to female if gender is missing
+#             base_weights = CUSTOMER_SEGMENTS.get(gender, CATEGORY_WEIGHTS)
+#         else:
+#             base_weights = CATEGORY_WEIGHTS  # If no customer, use general weights
+
+#         num_of_items = random.randint(1, 5)
+#         # for _ in range(num_of_items):
+#         #     rand_product = random.choice(products)
+#         #     order_items.append(
+#         #         OrderItem(
+#         #             order_id=order["order_id"],
+#         #             product_id=rand_product["product_id"],
+#         #             price=rand_product["price"],
+#         #         ).__dict__
+#         #     )
+#         for _ in range(num_of_items):
+#             # Popularity-based selection within the chosen category
+#             # categories = [product['category'] for product in products]
+
+#             chosen_category = random.choices(unique_categories, weights=base_weights.values())[0]
+#             eligible_products = [product for product in products if product['category'] == chosen_category]
+
+#             if eligible_products:  # Check if there are products in the chosen category
+#                 ratings = [p.get('average_rating', 3) for p in eligible_products]
+#                 total_rating = sum(ratings)
+#                 if total_rating == 0: # Handle cases where all ratings are missing or zero
+#                     product_weights = [1/len(eligible_products)] * len(eligible_products) # Uniform distribution if no ratings
+#                 else:
+#                     product_weights = [r / total_rating for r in ratings]
+#                 rand_product = random.choices(eligible_products, weights=product_weights)[0]
+#                 order_items.append(OrderItem(order_id=order["order_id"], product_id=rand_product["product_id"], price=rand_product["price"]).__dict__)
+
+#     return order_items
+
+import random
 
 
-def generate_order_items(orders: list, products: list):
+def generate_order_items(orders: list, products: list, customers: list):
     order_items = []
+
+    # Precompute category -> products mapping
+    category_product_map = {}
+    for product in products:
+        category_product_map.setdefault(product["category"], []).append(product)
+
+    unique_categories = list(category_product_map.keys())
+
+    # Precompute customer lookup
+    customer_lookup = {c["customer_id"]: c for c in customers}
+
     for order in orders:
+        customer_id = order.get("customer_id")
+        if customer_id:
+            customer = customer_lookup.get(order["customer_id"])
+            gender = customer.get("gender", "f") if customer else "f"
+        else:
+            gender = "f"
+        base_weights = CUSTOMER_SEGMENTS.get(gender, CATEGORY_WEIGHTS)
+
         num_of_items = random.randint(1, 5)
+        order_month = order["order_date"].month
+
         for _ in range(num_of_items):
-            rand_product = random.choice(products)
+            chosen_category = random.choices(
+                unique_categories, weights=base_weights.values()
+            )[0]
+            eligible_products = category_product_map.get(chosen_category, [])
+
+            if not eligible_products:
+                continue  # Skip if no products exist in the chosen category
+
+            seasonal_weights = []
+            for product in eligible_products:
+                base_rating = product.get("average_rating", 3)
+                month_name = calendar.month_name[order_month]  # Get month name
+
+                # Incorporate your SEASONAL_WEIGHTS here. Multiply the rating by the month weight
+                seasonal_factor = DataUtils.SEASONAL_WEIGHTS.get(order_month, 1.0)
+                seasonal_weights.append(base_rating * seasonal_factor)
+
+            # Normalize weights (ensure they sum to 1 for random.choices)
+            total_weighted_rating = sum(seasonal_weights)
+            if total_weighted_rating == 0:
+                product_weights = [1 / len(eligible_products)] * len(
+                    eligible_products
+                )  # Uniform if all weights are 0
+            else:
+                product_weights = [r / total_weighted_rating for r in seasonal_weights]
+
+            rand_product = random.choices(eligible_products, weights=product_weights)[0]
+            # order_items.append({
+            #     "order_id": order["order_id"],
+            #     "product_id": rand_product["product_id"],
+            #     "price": rand_product["price"]
+            # })
             order_items.append(
                 OrderItem(
                     order_id=order["order_id"],
@@ -459,7 +636,15 @@ def generate_order_items(orders: list, products: list):
                     price=rand_product["price"],
                 ).__dict__
             )
+
     return order_items
+
+
+def generate_employees(num_of_employees: int = None):
+    employees = []
+    for _ in range(num_of_employees):
+        employees.append(Employee().__dict__)
+    return employees
 
 
 def generate_customer_service(customers: list, num_of_customer_services: int):
@@ -495,17 +680,22 @@ def main(
     num_of_customers: int,
     daily_orders: int,
 ):
+    print("Generating location data")
+    location_data = generate_location_data("USA")
+    print("Generated geo data for " + str(len(location_data)) + " country successfully")
     print("Generating products data")
     products = generate_products()
     print("Generated " + str(len(products)) + " products data successfully")
     print("Generating stores data")
-    stores = generate_stores()
+    stores = generate_stores(geo_data=location_data)
     print("Generated " + str(len(stores)) + " stores data successfully")
     print("Generating suppliers data")
-    suppliers = generate_suppliers()
+    suppliers = generate_suppliers(geo_data=location_data)
     print("Generated " + str(len(suppliers)) + " suppliers data successfully")
     print("Generating customers data")
-    customers = generate_customers(num_of_customers=num_of_customers)
+    customers = generate_customers(
+        num_of_customers=num_of_customers, geo_data=location_data
+    )
     num_of_employees = len(stores) * 7
     print("Generating employees data")
     employees = generate_employees(num_of_employees=num_of_employees)
@@ -530,18 +720,45 @@ def main(
         + " customer services data successfully"
     )
     print("Generating orders and order items")
+    # store_count = len(stores)
+    # customer_count = len(customers)
     orders = []
     num_of_orders = (date.today() - CYMBAL_PETS_START_DATE).days * round(daily_orders)
-    for _ in range(num_of_orders):
-        has_customer_id = random.choices([True, False], weights=[0.67, 0.33])[0]
-        rand_store = random.randint(0, len(stores) - 1)
+    # for _ in range(num_of_orders):
+    #     has_customer_id = random.choices([True, False], weights=[0.67, 0.33])[0]
+    #     rand_store = random.randint(0, store_count - 1)
+    #     if has_customer_id:
+    #         rand_cust = random.randint(0, customer_count - 1)
+    #         customer_id = customers[rand_cust]["customer_id"]
+    #         address_city = customers[rand_cust]["address_city"]
+    #     else:
+    #         customer_id = None
+    #         address_city = None
+    #     orders.extend(
+    #         generate_orders(
+    #             customer_id=customer_id,
+    #             address_city=address_city,
+    #             store_id=stores[rand_store]["store_id"],
+    #         )
+    #     )
+    # order_items = generate_order_items(
+    #     orders=orders, products=products, customers=customers
+    # )
+
+    store_count = len(stores)
+    customer_count = len(customers)
+
+    for has_customer_id in random.choices(
+        [True, False], weights=[0.67, 0.33], k=num_of_orders
+    ):
+        rand_store = random.randint(0, store_count - 1)
+
         if has_customer_id:
-            rand_cust = random.randint(0, len(customers) - 1)
+            rand_cust = random.randint(0, customer_count - 1)
             customer_id = customers[rand_cust]["customer_id"]
             address_city = customers[rand_cust]["address_city"]
         else:
-            customer_id = None
-            address_city = None
+            customer_id, address_city = None, None
         orders.extend(
             generate_orders(
                 customer_id=customer_id,
@@ -549,7 +766,21 @@ def main(
                 store_id=stores[rand_store]["store_id"],
             )
         )
-    order_items = generate_order_items(orders=orders, products=products)
+    # orders.extend(
+    #     repeat(
+    #         generate_orders(
+    #             customer_id=customer_id,
+    #             address_city=address_city,
+    #             store_id=stores[rand_store]["store_id"],
+    #         ),
+    #         1,
+    #     )
+    # )
+
+    order_items = generate_order_items(
+        orders=orders, products=products, customers=customers
+    )
+
     print(
         "Generated "
         + str(len(orders))

@@ -31,10 +31,10 @@ fi
 case "$1" in
   remote)
     cp backends/backend-gcs.tf backend.tf
-    gsutil mb -p $TF_VAR_project_id gs://${TF_VAR_project_id}-terraform-state/
+    gsutil mb -p $TF_VAR_project_id gs://${TF_VAR_project_id}-${dev_project}-tf-state/
 
     echo "Initializing Terraform with remote GCS backend..."
-    terraform init -backend-config="bucket=${TF_VAR_project_id}-terraform-state"
+    terraform init -backend-config="bucket=${TF_VAR_project_id}-${dev_project}-tf-state"
     ;;
   local)
     echo "Initializing Terraform with local backend..."

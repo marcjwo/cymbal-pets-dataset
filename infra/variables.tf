@@ -11,7 +11,7 @@ variable "location" {
 
 variable "dataset_id" {
   type        = string
-  description = "Name of the dataset for the tables containing data extracts"
+  description = "Name of the dataset for the tables to land data in"
 }
 
 variable "table_ids" {

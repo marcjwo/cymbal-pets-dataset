@@ -5,5 +5,6 @@
   { "name": "email", "type": "STRING", "mode": "REQUIRED" },
   { "name": "gender", "type": "STRING", "mode": "REQUIRED" },
   { "name": "address_city", "type": "STRING", "mode": "REQUIRED" },
+  { "name": "address_state", "type": "STRING", "mode": "REQUIRED" },
   { "name": "loyalty_member", "type": "BOOLEAN", "mode": "NULLABLE" }
 ]
