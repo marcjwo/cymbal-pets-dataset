@@ -142,5 +142,85 @@
     "email": "linda.rodriguez@purr-adise.com",
     "phone_number": "555-692-4013",
     "address": "1555 Purr Place, Meowtown, FL 32001"
+  },
+  {
+    "supplier_id": 119,
+    "supplier_name": "Feline Fun Zone",
+    "contact_name": "Susan Davis",
+    "email": "susan.davis@felinefunzone.com",
+    "phone_number": "555-135-7924",
+    "address": "1666 Playful Place, Purrville, CA 95001"
+  },
+  {
+    "supplier_id": 120,
+    "supplier_name": "Canine Comfort Products",
+    "contact_name": "Joseph Miller",
+    "email": "joseph.miller@caninecomfort.com",
+    "phone_number": "555-792-4013",
+    "address": "1777 Cozy Lane, Barkland, NY 11001"
+  },
+  {
+    "supplier_id": 121,
+    "supplier_name": "Fishy Friends Aquarium",
+    "contact_name": "Lisa Wilson",
+    "email": "lisa.wilson@fishyfriends.com",
+    "phone_number": "555-246-8135",
+    "address": "1888 Aquatic Avenue, Scalyville, FL 33001"
+  },
+  {
+    "supplier_id": 122,
+    "supplier_name": "Chirpy Chirps Bird Supplies",
+    "contact_name": "Paul Moore",
+    "email": "paul.moore@chirpychirps.com",
+    "phone_number": "555-813-5792",
+    "address": "1999 Bird Way, Wingville, GA 34001"
+  },
+  {
+    "supplier_id": 123,
+    "supplier_name": "Hoppy Habitats",
+    "contact_name": "Angela Garcia",
+    "email": "angela.garcia@hoppyhabitats.com",
+    "phone_number": "555-369-1245",
+    "address": "2000 Bunny Lane, Hopperville, IL 61001"
+  },
+  {
+    "supplier_id": 124,
+    "supplier_name": "Reptile Retreats",
+    "contact_name": "David Taylor",
+    "email": "david.taylor@reptileretreats.com",
+    "phone_number": "555-912-4578",
+    "address": "2111 Reptile Road, Scalyville, NC 28001"
+  },
+  {
+    "supplier_id": 125,
+    "supplier_name": "Feline Foodie Delights",
+    "contact_name": "Kimberly Anderson",
+    "email": "kimberly.anderson@felinefoodie.com",
+    "phone_number": "555-457-8123",
+    "address": "2222 Catnip Lane, Purrville, MI 49001"
+  },
+  {
+    "supplier_id": 126,
+    "supplier_name": "Canine Chewtopia",
+    "contact_name": "Patrick Thomas",
+    "email": "patrick.thomas@caninechewtopia.com",
+    "phone_number": "555-024-6813",
+    "address": "2333 Chew Street, Barkland, VA 23001"
+  },
+  {
+    "supplier_id": 127,
+    "supplier_name": "Fishy Flakes Galore",
+    "contact_name": "Emily Jackson",
+    "email": "emily.jackson@fishyflakesgalore.com",
+    "phone_number": "555-681-3502",
+    "address": "2444 Fish Lane, Scalyville, PA 16001"
+  },
+  {
+    "supplier_id": 128,
+    "supplier_name": "Chirpy Tunes Aviary",
+    "contact_name": "Jason White",
+    "email": "jason.white@chirpytunesaviary.com",
+    "phone_number": "555-135-7924",
+    "address": "2555 Bird Haven, Wingville, MD 22001"
   }
 ]
