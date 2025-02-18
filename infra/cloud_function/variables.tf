@@ -22,7 +22,7 @@ variable "dataset_id" {
 
 variable "daily_orders" {
   type    = string
-  default = "300"
+  default = "2500"
 }
 
 # variable "min_locations" {
@@ -37,10 +37,10 @@ variable "daily_orders" {
 
 variable "num_of_customers" {
   type    = string
-  default = "60000"
+  default = "92000"
 }
 
 variable "start_date" {
   type    = string
-  default = "date(2023-01-01)"
+  default = "date(2022-01-01)"
 }

@@ -89,7 +89,7 @@ resource "google_cloudfunctions2_function" "default" {
   service_config {
     max_instance_count = 4
     min_instance_count = 0
-    available_memory   = "16Gi"
+    available_memory   = "32Gi"
     timeout_seconds    = 3600
     available_cpu      = "8"
     environment_variables = {
@@ -110,6 +110,7 @@ resource "google_cloud_scheduler_job" "default" {
   name        = "cymbal_pets_generator_schedule_job"
   description = "Schedule job to trigger cymbal pets generation"
   schedule    = "0 5 * * *"
+  attempt_deadline = "600s"
   retry_config {
     retry_count = 1
   }
