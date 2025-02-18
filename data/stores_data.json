@@ -1,257 +1,452 @@
 [
   {
-    "store_id": 1,
-    "store_name": "Cymbal Pets Midtown",
-    "location": "New York City, NY",
-    "latitude": 40.758,
-    "longitude": -73.9855,
-    "opening_hours": {
-      "Monday": "9:00 AM - 9:00 PM",
-      "Tuesday": "9:00 AM - 9:00 PM",
-      "Wednesday": "9:00 AM - 9:00 PM",
-      "Thursday": "9:00 AM - 9:00 PM",
-      "Friday": "9:00 AM - 9:00 PM",
-      "Saturday": "9:00 AM - 9:00 PM",
-      "Sunday": "10:00 AM - 7:00 PM"
+    "store_id":1,
+    "store_name":"Cymbal Pets Midtown",
+    "location":"New York City, NY",
+    "latitude":40.758,
+    "longitude":-73.9855,
+    "opening_hours":{
+      "Monday":"9:00 AM - 9:00 PM",
+      "Tuesday":"9:00 AM - 9:00 PM",
+      "Wednesday":"9:00 AM - 9:00 PM",
+      "Thursday":"9:00 AM - 9:00 PM",
+      "Friday":"9:00 AM - 9:00 PM",
+      "Saturday":"9:00 AM - 9:00 PM",
+      "Sunday":"10:00 AM - 7:00 PM"
     },
-    "manager_id": 101
+    "manager_id":101,
+    "region":"North"
   },
   {
-    "store_id": 2,
-    "store_name": "Cymbal Pets Downtown",
-    "location": "Los Angeles, CA",
-    "latitude": 34.0522,
-    "longitude": -118.2437,
-    "opening_hours": {
-      "Monday": "9:00 AM - 8:00 PM",
-      "Tuesday": "9:00 AM - 8:00 PM",
-      "Wednesday": "9:00 AM - 8:00 PM",
-      "Thursday": "9:00 AM - 8:00 PM",
-      "Friday": "9:00 AM - 8:00 PM",
-      "Saturday": "9:00 AM - 8:00 PM",
-      "Sunday": "10:00 AM - 6:00 PM"
+    "store_id":2,
+    "store_name":"Cymbal Pets Downtown",
+    "location":"Los Angeles, CA",
+    "latitude":34.0522,
+    "longitude":-118.2437,
+    "opening_hours":{
+      "Monday":"9:00 AM - 8:00 PM",
+      "Tuesday":"9:00 AM - 8:00 PM",
+      "Wednesday":"9:00 AM - 8:00 PM",
+      "Thursday":"9:00 AM - 8:00 PM",
+      "Friday":"9:00 AM - 8:00 PM",
+      "Saturday":"9:00 AM - 8:00 PM",
+      "Sunday":"10:00 AM - 6:00 PM"
     },
-    "manager_id": 102
+    "manager_id":102,
+    "region":"West"
   },
   {
-    "store_id": 3,
-    "store_name": "Cymbal Pets South Beach",
-    "location": "Miami, FL",
-    "latitude": 25.7907,
-    "longitude": -80.13,
-    "opening_hours": {
-      "Monday": "10:00 AM - 7:00 PM",
-      "Tuesday": "10:00 AM - 7:00 PM",
-      "Wednesday": "10:00 AM - 7:00 PM",
-      "Thursday": "10:00 AM - 7:00 PM",
-      "Friday": "10:00 AM - 7:00 PM",
-      "Saturday": "10:00 AM - 7:00 PM",
-      "Sunday": "11:00 AM - 5:00 PM"
+    "store_id":3,
+    "store_name":"Cymbal Pets South Beach",
+    "location":"Miami, FL",
+    "latitude":25.7907,
+    "longitude":-80.13,
+    "opening_hours":{
+      "Monday":"10:00 AM - 7:00 PM",
+      "Tuesday":"10:00 AM - 7:00 PM",
+      "Wednesday":"10:00 AM - 7:00 PM",
+      "Thursday":"10:00 AM - 7:00 PM",
+      "Friday":"10:00 AM - 7:00 PM",
+      "Saturday":"10:00 AM - 7:00 PM",
+      "Sunday":"11:00 AM - 5:00 PM"
     },
-    "manager_id": 103
+    "manager_id":103,
+    "region":"East"
   },
   {
-    "store_id": 4,
-    "store_name": "Cymbal Pets Wicker Park",
-    "location": "Chicago, IL",
-    "latitude": 41.9077,
-    "longitude": -87.6766,
-    "opening_hours": {
-      "Monday": "9:00 AM - 7:00 PM",
-      "Tuesday": "9:00 AM - 7:00 PM",
-      "Wednesday": "9:00 AM - 7:00 PM",
-      "Thursday": "9:00 AM - 7:00 PM",
-      "Friday": "9:00 AM - 7:00 PM",
-      "Saturday": "9:00 AM - 7:00 PM",
-      "Sunday": "10:00 AM - 5:00 PM"
+    "store_id":4,
+    "store_name":"Cymbal Pets Wicker Park",
+    "location":"Chicago, IL",
+    "latitude":41.9077,
+    "longitude":-87.6766,
+    "opening_hours":{
+      "Monday":"9:00 AM - 7:00 PM",
+      "Tuesday":"9:00 AM - 7:00 PM",
+      "Wednesday":"9:00 AM - 7:00 PM",
+      "Thursday":"9:00 AM - 7:00 PM",
+      "Friday":"9:00 AM - 7:00 PM",
+      "Saturday":"9:00 AM - 7:00 PM",
+      "Sunday":"10:00 AM - 5:00 PM"
     },
-    "manager_id": 104
+    "manager_id":104,
+    "region":"North"
   },
   {
-    "store_id": 5,
-    "store_name": "Cymbal Pets The Domain",
-    "location": "Austin, TX",
-    "latitude": 30.4018,
-    "longitude": -97.7223,
-    "opening_hours": {
-      "Monday": "9:00 AM - 9:00 PM",
-      "Tuesday": "9:00 AM - 9:00 PM",
-      "Wednesday": "9:00 AM - 9:00 PM",
-      "Thursday": "9:00 AM - 9:00 PM",
-      "Friday": "9:00 AM - 9:00 PM",
-      "Saturday": "9:00 AM - 9:00 PM",
-      "Sunday": "10:00 AM - 6:00 PM"
+    "store_id":5,
+    "store_name":"Cymbal Pets The Domain",
+    "location":"Austin, TX",
+    "latitude":30.4018,
+    "longitude":-97.7223,
+    "opening_hours":{
+      "Monday":"9:00 AM - 9:00 PM",
+      "Tuesday":"9:00 AM - 9:00 PM",
+      "Wednesday":"9:00 AM - 9:00 PM",
+      "Thursday":"9:00 AM - 9:00 PM",
+      "Friday":"9:00 AM - 9:00 PM",
+      "Saturday":"9:00 AM - 9:00 PM",
+      "Sunday":"10:00 AM - 6:00 PM"
     },
-    "manager_id": 105
+    "manager_id":105,
+    "region":"South"
   },
   {
-    "store_id": 6,
-    "store_name": "Cymbal Pets Pike Place",
-    "location": "Seattle, WA",
-    "latitude": 47.6085,
-    "longitude": -122.3405,
-    "opening_hours": {
-      "Monday": "9:00 AM - 8:00 PM",
-      "Tuesday": "9:00 AM - 8:00 PM",
-      "Wednesday": "9:00 AM - 8:00 PM",
-      "Thursday": "9:00 AM - 8:00 PM",
-      "Friday": "9:00 AM - 8:00 PM",
-      "Saturday": "9:00 AM - 8:00 PM",
-      "Sunday": "10:00 AM - 6:00 PM"
+    "store_id":6,
+    "store_name":"Cymbal Pets Pike Place",
+    "location":"Seattle, WA",
+    "latitude":47.6085,
+    "longitude":-122.3405,
+    "opening_hours":{
+      "Monday":"9:00 AM - 8:00 PM",
+      "Tuesday":"9:00 AM - 8:00 PM",
+      "Wednesday":"9:00 AM - 8:00 PM",
+      "Thursday":"9:00 AM - 8:00 PM",
+      "Friday":"9:00 AM - 8:00 PM",
+      "Saturday":"9:00 AM - 8:00 PM",
+      "Sunday":"10:00 AM - 6:00 PM"
     },
-    "manager_id": 106
+    "manager_id":106,
+    "region":"North"
   },
   {
-    "store_id": 7,
-    "store_name": "Cymbal Pets Pearl District",
-    "location": "Portland, OR",
-    "latitude": 45.5231,
-    "longitude": -122.6765,
-    "opening_hours": {
-      "Monday": "9:00 AM - 7:00 PM",
-      "Tuesday": "9:00 AM - 7:00 PM",
-      "Wednesday": "9:00 AM - 7:00 PM",
-      "Thursday": "9:00 AM - 7:00 PM",
-      "Friday": "9:00 AM - 7:00 PM",
-      "Saturday": "10:00 AM - 6:00 PM",
-      "Sunday": "11:00 AM - 5:00 PM"
+    "store_id":7,
+    "store_name":"Cymbal Pets Pearl District",
+    "location":"Portland, OR",
+    "latitude":45.5231,
+    "longitude":-122.6765,
+    "opening_hours":{
+      "Monday":"9:00 AM - 7:00 PM",
+      "Tuesday":"9:00 AM - 7:00 PM",
+      "Wednesday":"9:00 AM - 7:00 PM",
+      "Thursday":"9:00 AM - 7:00 PM",
+      "Friday":"9:00 AM - 7:00 PM",
+      "Saturday":"10:00 AM - 6:00 PM",
+      "Sunday":"11:00 AM - 5:00 PM"
     },
-    "manager_id": 107
+    "manager_id":107,
+    "region":"North"
   },
   {
-    "store_id": 8,
-    "store_name": "Cymbal Pets Union Square",
-    "location": "San Francisco, CA",
-    "latitude": 37.7879,
-    "longitude": -122.4075,
-    "opening_hours": {
-      "Monday": "9:00 AM - 9:00 PM",
-      "Tuesday": "9:00 AM - 9:00 PM",
-      "Wednesday": "9:00 AM - 9:00 PM",
-      "Thursday": "9:00 AM - 9:00 PM",
-      "Friday": "9:00 AM - 9:00 PM",
-      "Saturday": "9:00 AM - 8:00 PM",
-      "Sunday": "10:00 AM - 7:00 PM"
+    "store_id":8,
+    "store_name":"Cymbal Pets Union Square",
+    "location":"San Francisco, CA",
+    "latitude":37.7879,
+    "longitude":-122.4075,
+    "opening_hours":{
+      "Monday":"9:00 AM - 9:00 PM",
+      "Tuesday":"9:00 AM - 9:00 PM",
+      "Wednesday":"9:00 AM - 9:00 PM",
+      "Thursday":"9:00 AM - 9:00 PM",
+      "Friday":"9:00 AM - 9:00 PM",
+      "Saturday":"9:00 AM - 8:00 PM",
+      "Sunday":"10:00 AM - 7:00 PM"
     },
-    "manager_id": 108
+    "manager_id":108,
+    "region":"West"
   },
   {
-    "store_id": 9,
-    "store_name": "Cymbal Pets Georgetown",
-    "location": "Washington, D.C.",
-    "latitude": 38.9072,
-    "longitude": -77.0722,
-    "opening_hours": {
-      "Monday": "9:00 AM - 7:00 PM",
-      "Tuesday": "9:00 AM - 7:00 PM",
-      "Wednesday": "9:00 AM - 7:00 PM",
-      "Thursday": "9:00 AM - 7:00 PM",
-      "Friday": "9:00 AM - 8:00 PM",
-      "Saturday": "10:00 AM - 7:00 PM",
-      "Sunday": "11:00 AM - 6:00 PM"
+    "store_id":9,
+    "store_name":"Cymbal Pets Georgetown",
+    "location":"Washington, D.C.",
+    "latitude":38.9072,
+    "longitude":-77.0722,
+    "opening_hours":{
+      "Monday":"9:00 AM - 7:00 PM",
+      "Tuesday":"9:00 AM - 7:00 PM",
+      "Wednesday":"9:00 AM - 7:00 PM",
+      "Thursday":"9:00 AM - 7:00 PM",
+      "Friday":"9:00 AM - 8:00 PM",
+      "Saturday":"10:00 AM - 7:00 PM",
+      "Sunday":"11:00 AM - 6:00 PM"
     },
-    "manager_id": 109
+    "manager_id":109,
+    "region":"Unknown"
   },
   {
-    "store_id": 10,
-    "store_name": "Cymbal Pets Back Bay",
-    "location": "Boston, MA",
-    "latitude": 42.3503,
-    "longitude": -71.0813,
-    "opening_hours": {
-      "Monday": "9:00 AM - 8:00 PM",
-      "Tuesday": "9:00 AM - 8:00 PM",
-      "Wednesday": "9:00 AM - 8:00 PM",
-      "Thursday": "9:00 AM - 8:00 PM",
-      "Friday": "9:00 AM - 8:00 PM",
-      "Saturday": "9:00 AM - 7:00 PM",
-      "Sunday": "10:00 AM - 6:00 PM"
+    "store_id":10,
+    "store_name":"Cymbal Pets Back Bay",
+    "location":"Boston, MA",
+    "latitude":42.3503,
+    "longitude":-71.0813,
+    "opening_hours":{
+      "Monday":"9:00 AM - 8:00 PM",
+      "Tuesday":"9:00 AM - 8:00 PM",
+      "Wednesday":"9:00 AM - 8:00 PM",
+      "Thursday":"9:00 AM - 8:00 PM",
+      "Friday":"9:00 AM - 8:00 PM",
+      "Saturday":"9:00 AM - 7:00 PM",
+      "Sunday":"10:00 AM - 6:00 PM"
     },
-    "manager_id": 110
+    "manager_id":110,
+    "region":"North"
   },
   {
-    "store_id": 11,
-    "store_name": "Cymbal Pets Old Town",
-    "location": "San Diego, CA",
-    "latitude": 32.7157,
-    "longitude": -117.1611,
-    "opening_hours": {
-      "Monday": "10:00 AM - 7:00 PM",
-      "Tuesday": "10:00 AM - 7:00 PM",
-      "Wednesday": "10:00 AM - 7:00 PM",
-      "Thursday": "10:00 AM - 7:00 PM",
-      "Friday": "10:00 AM - 8:00 PM",
-      "Saturday": "9:00 AM - 8:00 PM",
-      "Sunday": "10:00 AM - 6:00 PM"
+    "store_id":11,
+    "store_name":"Cymbal Pets Old Town",
+    "location":"San Diego, CA",
+    "latitude":32.7157,
+    "longitude":-117.1611,
+    "opening_hours":{
+      "Monday":"10:00 AM - 7:00 PM",
+      "Tuesday":"10:00 AM - 7:00 PM",
+      "Wednesday":"10:00 AM - 7:00 PM",
+      "Thursday":"10:00 AM - 7:00 PM",
+      "Friday":"10:00 AM - 8:00 PM",
+      "Saturday":"9:00 AM - 8:00 PM",
+      "Sunday":"10:00 AM - 6:00 PM"
     },
-    "manager_id": 111
+    "manager_id":111,
+    "region":"West"
   },
   {
-    "store_id": 12,
-    "store_name": "Cymbal Pets Downtown",
-    "location": "Denver, CO",
-    "latitude": 39.7392,
-    "longitude": -104.9903,
-    "opening_hours": {
-      "Monday": "9:00 AM - 7:00 PM",
-      "Tuesday": "9:00 AM - 7:00 PM",
-      "Wednesday": "9:00 AM - 7:00 PM",
-      "Thursday": "9:00 AM - 7:00 PM",
-      "Friday": "9:00 AM - 8:00 PM",
-      "Saturday": "10:00 AM - 6:00 PM",
-      "Sunday": "11:00 AM - 5:00 PM"
+    "store_id":12,
+    "store_name":"Cymbal Pets Downtown",
+    "location":"Denver, CO",
+    "latitude":39.7392,
+    "longitude":-104.9903,
+    "opening_hours":{
+      "Monday":"9:00 AM - 7:00 PM",
+      "Tuesday":"9:00 AM - 7:00 PM",
+      "Wednesday":"9:00 AM - 7:00 PM",
+      "Thursday":"9:00 AM - 7:00 PM",
+      "Friday":"9:00 AM - 8:00 PM",
+      "Saturday":"10:00 AM - 6:00 PM",
+      "Sunday":"11:00 AM - 5:00 PM"
     },
-    "manager_id": 112
+    "manager_id":112,
+    "region":"West"
   },
   {
-    "store_id": 13,
-    "store_name": "Cymbal Pets Midtown",
-    "location": "Atlanta, GA",
-    "latitude": 33.749,
-    "longitude": -84.388,
-    "opening_hours": {
-      "Monday": "9:00 AM - 9:00 PM",
-      "Tuesday": "9:00 AM - 9:00 PM",
-      "Wednesday": "9:00 AM - 9:00 PM",
-      "Thursday": "9:00 AM - 9:00 PM",
-      "Friday": "9:00 AM - 9:00 PM",
-      "Saturday": "9:00 AM - 8:00 PM",
-      "Sunday": "10:00 AM - 7:00 PM"
+    "store_id":13,
+    "store_name":"Cymbal Pets Midtown",
+    "location":"Atlanta, GA",
+    "latitude":33.749,
+    "longitude":-84.388,
+    "opening_hours":{
+      "Monday":"9:00 AM - 9:00 PM",
+      "Tuesday":"9:00 AM - 9:00 PM",
+      "Wednesday":"9:00 AM - 9:00 PM",
+      "Thursday":"9:00 AM - 9:00 PM",
+      "Friday":"9:00 AM - 9:00 PM",
+      "Saturday":"9:00 AM - 8:00 PM",
+      "Sunday":"10:00 AM - 7:00 PM"
     },
-    "manager_id": 113
+    "manager_id":113,
+    "region":"East"
   },
   {
-    "store_id": 14,
-    "store_name": "Cymbal Pets French Quarter",
-    "location": "New Orleans, LA",
-    "latitude": 29.9511,
-    "longitude": -90.0715,
-    "opening_hours": {
-      "Monday": "10:00 AM - 6:00 PM",
-      "Tuesday": "10:00 AM - 6:00 PM",
-      "Wednesday": "10:00 AM - 6:00 PM",
-      "Thursday": "10:00 AM - 6:00 PM",
-      "Friday": "10:00 AM - 7:00 PM",
-      "Saturday": "9:00 AM - 7:00 PM",
-      "Sunday": "11:00 AM - 5:00 PM"
+    "store_id":14,
+    "store_name":"Cymbal Pets French Quarter",
+    "location":"New Orleans, LA",
+    "latitude":29.9511,
+    "longitude":-90.0715,
+    "opening_hours":{
+      "Monday":"10:00 AM - 6:00 PM",
+      "Tuesday":"10:00 AM - 6:00 PM",
+      "Wednesday":"10:00 AM - 6:00 PM",
+      "Thursday":"10:00 AM - 6:00 PM",
+      "Friday":"10:00 AM - 7:00 PM",
+      "Saturday":"9:00 AM - 7:00 PM",
+      "Sunday":"11:00 AM - 5:00 PM"
     },
-    "manager_id": 114
+    "manager_id":114,
+    "region":"South"
   },
   {
-    "store_id": 15,
-    "store_name": "Cymbal Pets Downtown",
-    "location": "Nashville, TN",
-    "latitude": 36.1627,
-    "longitude": -86.7816,
-    "opening_hours": {
-      "Monday": "9:00 AM - 7:00 PM",
-      "Tuesday": "9:00 AM - 7:00 PM",
-      "Wednesday": "9:00 AM - 7:00 PM",
-      "Thursday": "9:00 AM - 7:00 PM",
-      "Friday": "9:00 AM - 8:00 PM",
-      "Saturday": "10:00 AM - 7:00 PM",
-      "Sunday": "11:00 AM - 6:00 PM"
+    "store_id":15,
+    "store_name":"Cymbal Pets Downtown",
+    "location":"Nashville, TN",
+    "latitude":36.1627,
+    "longitude":-86.7816,
+    "opening_hours":{
+      "Monday":"9:00 AM - 7:00 PM",
+      "Tuesday":"9:00 AM - 7:00 PM",
+      "Wednesday":"9:00 AM - 7:00 PM",
+      "Thursday":"9:00 AM - 7:00 PM",
+      "Friday":"9:00 AM - 8:00 PM",
+      "Saturday":"10:00 AM - 7:00 PM",
+      "Sunday":"11:00 AM - 6:00 PM"
     },
-    "manager_id": 115
+    "manager_id":115,
+    "region":"South"
+  },
+  {
+    "store_id":16,
+    "store_name":"Cymbal Pets Downtown",
+    "location":"Phoenix, AZ",
+    "latitude":33.4484,
+    "longitude":-112.074,
+    "opening_hours":{
+      "Monday":"9:00 AM - 7:00 PM",
+      "Tuesday":"9:00 AM - 7:00 PM",
+      "Wednesday":"9:00 AM - 7:00 PM",
+      "Thursday":"9:00 AM - 7:00 PM",
+      "Friday":"9:00 AM - 8:00 PM",
+      "Saturday":"10:00 AM - 6:00 PM",
+      "Sunday":"11:00 AM - 5:00 PM"
+    },
+    "manager_id":116,
+    "region":"West"
+  },
+  {
+    "store_id":17,
+    "store_name":"Cymbal Pets Midtown",
+    "location":"Las Vegas, NV",
+    "latitude":36.1699,
+    "longitude":-115.1398,
+    "opening_hours":{
+      "Monday":"9:00 AM - 9:00 PM",
+      "Tuesday":"9:00 AM - 9:00 PM",
+      "Wednesday":"9:00 AM - 9:00 PM",
+      "Thursday":"9:00 AM - 9:00 PM",
+      "Friday":"9:00 AM - 9:00 PM",
+      "Saturday":"9:00 AM - 8:00 PM",
+      "Sunday":"10:00 AM - 7:00 PM"
+    },
+    "manager_id":117,
+    "region":"West"
+  },
+  {
+    "store_id":18,
+    "store_name":"Cymbal Pets Old Town",
+    "location":"Albuquerque, NM",
+    "latitude":35.0853,
+    "longitude":-106.6056,
+    "opening_hours":{
+      "Monday":"10:00 AM - 7:00 PM",
+      "Tuesday":"10:00 AM - 7:00 PM",
+      "Wednesday":"10:00 AM - 7:00 PM",
+      "Thursday":"10:00 AM - 7:00 PM",
+      "Friday":"10:00 AM - 8:00 PM",
+      "Saturday":"9:00 AM - 8:00 PM",
+      "Sunday":"10:00 AM - 6:00 PM"
+    },
+    "manager_id":118,
+    "region":"West"
+  },
+  {
+    "store_id":19,
+    "store_name":"Cymbal Pets Downtown",
+    "location":"Salt Lake City, UT",
+    "latitude":40.7608,
+    "longitude":-111.891,
+    "opening_hours":{
+      "Monday":"9:00 AM - 7:00 PM",
+      "Tuesday":"9:00 AM - 7:00 PM",
+      "Wednesday":"9:00 AM - 7:00 PM",
+      "Thursday":"9:00 AM - 7:00 PM",
+      "Friday":"9:00 AM - 8:00 PM",
+      "Saturday":"10:00 AM - 6:00 PM",
+      "Sunday":"11:00 AM - 5:00 PM"
+    },
+    "manager_id":119,
+    "region":"West"
+  },
+  {
+    "store_id":20,
+    "store_name":"Cymbal Pets Midtown",
+    "location":"Boise, ID",
+    "latitude":43.615,
+    "longitude":-116.2023,
+    "opening_hours":{
+      "Monday":"9:00 AM - 9:00 PM",
+      "Tuesday":"9:00 AM - 9:00 PM",
+      "Wednesday":"9:00 AM - 9:00 PM",
+      "Thursday":"9:00 AM - 9:00 PM",
+      "Friday":"9:00 AM - 9:00 PM",
+      "Saturday":"9:00 AM - 8:00 PM",
+      "Sunday":"10:00 AM - 7:00 PM"
+    },
+    "manager_id":120,
+    "region":"North"
+  },
+  {
+    "store_id":21,
+    "store_name":"Cymbal Pets Pearl District",
+    "location":"Billings, MT",
+    "latitude":45.7833,
+    "longitude":-108.5007,
+    "opening_hours":{
+      "Monday":"9:00 AM - 7:00 PM",
+      "Tuesday":"9:00 AM - 7:00 PM",
+      "Wednesday":"9:00 AM - 7:00 PM",
+      "Thursday":"9:00 AM - 7:00 PM",
+      "Friday":"9:00 AM - 7:00 PM",
+      "Saturday":"10:00 AM - 6:00 PM",
+      "Sunday":"11:00 AM - 5:00 PM"
+    },
+    "manager_id":121,
+    "region":"North"
+  },
+  {
+    "store_id":22,
+    "store_name":"Cymbal Pets Union Square",
+    "location":"Cheyenne, WY",
+    "latitude":41.1396,
+    "longitude":-104.8202,
+    "opening_hours":{
+      "Monday":"9:00 AM - 9:00 PM",
+      "Tuesday":"9:00 AM - 9:00 PM",
+      "Wednesday":"9:00 AM - 9:00 PM",
+      "Thursday":"9:00 AM - 9:00 PM",
+      "Friday":"9:00 AM - 9:00 PM",
+      "Saturday":"9:00 AM - 8:00 PM",
+      "Sunday":"10:00 AM - 7:00 PM"
+    },
+    "manager_id":122,
+    "region":"North"
+  },
+  {
+    "store_id":23,
+    "store_name":"Cymbal Pets Georgetown",
+    "location":"Fargo, ND",
+    "latitude":46.8772,
+    "longitude":-96.7898,
+    "opening_hours":{
+      "Monday":"9:00 AM - 7:00 PM",
+      "Tuesday":"9:00 AM - 7:00 PM",
+      "Wednesday":"9:00 AM - 7:00 PM",
+      "Thursday":"9:00 AM - 7:00 PM",
+      "Friday":"9:00 AM - 8:00 PM",
+      "Saturday":"10:00 AM - 7:00 PM",
+      "Sunday":"11:00 AM - 6:00 PM"
+    },
+    "manager_id":123,
+    "region":"North"
+  },
+  {
+    "store_id":24,
+    "store_name":"Cymbal Pets Back Bay",
+    "location":"Sioux Falls, SD",
+    "latitude":43.5497,
+    "longitude":-96.7003,
+    "opening_hours":{
+      "Monday":"9:00 AM - 8:00 PM",
+      "Tuesday":"9:00 AM - 8:00 PM",
+      "Wednesday":"9:00 AM - 8:00 PM",
+      "Thursday":"9:00 AM - 8:00 PM",
+      "Friday":"9:00 AM - 8:00 PM",
+      "Saturday":"9:00 AM - 7:00 PM",
+      "Sunday":"10:00 AM - 6:00 PM"
+    },
+    "manager_id":124,
+    "region":"North"
+  },
+  {
+    "store_id":25,
+    "store_name":"Cymbal Pets Downtown",
+    "location":"Omaha, NE",
+    "latitude":41.2524,
+    "longitude":-95.998,
+    "opening_hours":{
+      "Monday":"10:00 AM - 7:00 PM",
+      "Tuesday":"10:00 AM - 7:00 PM",
+      "Wednesday":"10:00 AM - 7:00 PM",
+      "Thursday":"10:00 AM - 7:00 PM",
+      "Friday":"10:00 AM - 8:00 PM",
+      "Saturday":"9:00 AM - 8:00 PM",
+      "Sunday":"10:00 AM - 6:00 PM"
+    },
+    "manager_id":125,
+    "region":"North"
   }
 ]
