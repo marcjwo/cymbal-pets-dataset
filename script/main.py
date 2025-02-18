@@ -132,19 +132,34 @@ class DataHandling:
 
 
 class DataUtils:
+    # SEASONAL_WEIGHTS = {
+    #     1: 0.11,  # January
+    #     2: 0.09,  # February
+    #     3: 0.08,  # March
+    #     4: 0.11,  # April
+    #     5: 0.11,  # May
+    #     6: 0.13,  # June
+    #     7: 0.14,  # July
+    #     8: 0.10,  # August
+    #     9: 0.1,  # September
+    #     10: 0.08,  # October
+    #     11: 0.09,  # November
+    #     12: 0.1,  # December
+    # }
+
     SEASONAL_WEIGHTS = {
-        1: 0.11,  # January
-        2: 0.09,  # February
+        1: 0.14,  # January
+        2: 0.10,  # February
         3: 0.08,  # March
-        4: 0.11,  # April
-        5: 0.11,  # May
-        6: 0.13,  # June
-        7: 0.14,  # July
-        8: 0.10,  # August
-        9: 0.1,  # September
-        10: 0.08,  # October
-        11: 0.09,  # November
-        12: 0.1,  # December
+        4: 0.09,  # April
+        5: 0.13,  # May
+        6: 0.15,  # June
+        7: 0.11,  # July
+        8: 0.09,  # August
+        9: 0.08,  # September
+        10: 0.10,  # October
+        11: 0.11,  # November
+        12: 0.16,  # December
     }
 
     # @staticmethod
@@ -354,9 +369,9 @@ class NutritionAgent:
 @dataclass
 class PetProfile:
     customer_id: int
+    pet_type: str
     pet_id: int = field(default_factory=itertools.count(start=1).__next__)
     pet_name: str = field(init=False)
-    pet_type: str = field(init=False)
     age: int = field(init=False)
     weight: int = field(init=False)
     activity_level: str = field(init=False)
@@ -364,8 +379,7 @@ class PetProfile:
 
     def __post_init__(self):
         self.pet_name = fake.first_name()
-        pet_type = ["Cat", "Dog", "Fish", "Bird", "Reptile", "Other"]
-        self.pet_type = random.choice(pet_type)
+        # self.pet_type = random.choice(pet_type)
         self.age = random.randint(1, 10)
         self.weight = random.randint(1, 20)
         activity_level = ["Low", "Medium", "High"]
@@ -396,7 +410,13 @@ def generate_pet_profiles(customers: list, num_of_pet_profiles: int):
     pet_profiles = []
     for _ in range(num_of_pet_profiles):
         rand_cust = random.choice(customers)
-        pet_profiles.append(PetProfile(customer_id=rand_cust["customer_id"]).__dict__)
+        rand_pet = random.choices(
+            ["Cat", "Dog", "Fish", "Bird", "Reptile", "Other"],
+            weights=[0.3, 0.25, 0.14, 0.09, 0.06, 0.16],
+        )[0]
+        pet_profiles.append(
+            PetProfile(customer_id=rand_cust["customer_id"], pet_type=rand_pet).__dict__
+        )
 
     return pet_profiles
 
@@ -593,7 +613,10 @@ def generate_order_items(orders: list, products: list, customers: list):
             gender = "f"
         base_weights = CUSTOMER_SEGMENTS.get(gender, CATEGORY_WEIGHTS)
 
-        num_of_items = random.randint(1, 5)
+        # num_of_items = random.randint(1, 5)
+        num_of_items = random.choices(
+            [1, 2, 3, 4, 5], weights=[0.25, 0.45, 0.18, 0.07, 0.05]
+        )[0]
         order_month = order["order_date"].month
 
         for _ in range(num_of_items):
@@ -608,7 +631,6 @@ def generate_order_items(orders: list, products: list, customers: list):
             seasonal_weights = []
             for product in eligible_products:
                 base_rating = product.get("average_rating", 3)
-                month_name = calendar.month_name[order_month]  # Get month name
 
                 # Incorporate your SEASONAL_WEIGHTS here. Multiply the rating by the month weight
                 seasonal_factor = DataUtils.SEASONAL_WEIGHTS.get(order_month, 1.0)
@@ -710,7 +732,7 @@ def main(
     )
     print("Generated " + str(len(pet_profiles)) + " pet profiles data successfully")
     print("Generating customer service data")
-    num_of_customer_services = round(len(customers) / 12)
+    num_of_customer_services = round(len(customers) / 44)
     customer_service = generate_customer_service(
         customers=customers, num_of_customer_services=num_of_customer_services
     )
@@ -815,7 +837,7 @@ def main(
     print("Cymbal Pets Dataset generation successfully completed!")
 
 
-main(num_of_customers=NUM_OF_CUSTOMERS, daily_orders=DAILY_ORDERS)
+# main(num_of_customers=NUM_OF_CUSTOMERS, daily_orders=DAILY_ORDERS)
 
 
 def hello_http(request):
