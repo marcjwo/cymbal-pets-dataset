@@ -1,0 +1,60 @@
+[
+  {
+    "distribution_center_id": 1,
+    "distribution_center_name": "Cymbal Pets Northeast Distribution Center",
+    "address_city": "Newburgh",
+    "address_state": "New York",
+    "latitude": 41.50343,
+    "longitude": -74.01042
+  },
+  {
+    "distribution_center_id": 2,
+    "distribution_center_name": "Cymbal Pets Southeast Distribution Center",
+    "address_city": "Atlanta",
+    "address_state": "Georgia",
+    "latitude": 33.749,
+    "longitude": -84.38798
+  },
+  {
+    "distribution_center_id": 3,
+    "distribution_center_name": "Cymbal Pets Midwest Distribution Center",
+    "address_city": "Chicago",
+    "address_state": "Illinois",
+    "latitude": 41.85003,
+    "longitude": -87.65005
+  },
+  {
+    "distribution_center_id": 4,
+    "distribution_center_name": "Cymbal Pets Southwest Distribution Center",
+    "address_city": "Phoenix",
+    "address_state": "Arizona",
+    "latitude": 33.44838,
+    "longitude": -112.07404
+  },
+  {
+    "distribution_center_id": 5,
+    "distribution_center_name": "Cymbal Pets Northwest Distribution Center",
+    "address_city": "Portland",
+    "address_state": "Oregon",
+    "latitude": 45.52345,
+    "longitude": -122.67621
+  },
+  {
+    "distribution_center_id": 6,
+    "distribution_center_name": "Cymbal Pets Online Super Center East",
+    "location": "Memphis, TN",
+    "address_city": "Memphis",
+    "address_state": "Tennessee",
+    "latitude": 35.14953,
+    "longitude": -90.04898
+  },
+  {
+    "distribution_center_id": 7,
+    "distribution_center_name": "Cymbal Pets Online Super Center West",
+    "address_city": "Las Vegas",
+    "address_state": "Nevada",
+    "name": "Las Vegas",
+    "latitude": 36.17497,
+    "longitude": -115.13722
+  }
+]
