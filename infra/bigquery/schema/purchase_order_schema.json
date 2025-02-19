@@ -1,0 +1,37 @@
+[
+  {
+    "name": "supplier_id",
+    "type": "INTEGER",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "product_id",
+    "type": "INTEGER",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "distribution_center_id",
+    "type": "INTEGER",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "purchase_order_id",
+    "type": "INTEGER",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "purchase_order_date",
+    "type": "DATE",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "purchase_delivery_date",
+    "type": "DATE",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "quantity",
+    "type": "INTEGER",
+    "mode": "REQUIRED"
+  }
+]
