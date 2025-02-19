@@ -1,0 +1,32 @@
+[
+  {
+    "name": "distribution_center_id",
+    "type": "INTEGER",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "distribution_center_name",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "address_city",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "address_state",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "latitude",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "longitude",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  }
+]
