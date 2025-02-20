@@ -7,6 +7,7 @@ from decimal import Decimal
 from itertools import repeat
 import requests
 import calendar
+import random
 
 from google.cloud import bigquery, storage
 from faker import Faker
@@ -387,7 +388,83 @@ class PetProfile:
         self.dietary_needs = fake.sentence(nb_words=10)
 
 
+@dataclass
+class DistributionCenter:
+    distribution_center_id: int
+    distribution_center_name: str
+    address_city: str
+    address_state: str
+    latitude: float
+    longitude: float
+
+
+@dataclass
+class PurchaseOrder:
+    supplier_id: int
+    product_id: int
+    distribution_center_id: int
+    purchase_order_id: int = field(default_factory=itertools.count(start=1).__next__)
+    purchase_order_date: date = field(init=False)
+    purchase_delivery_date: date = field(init=False)
+    quantity: int = field(init=False)
+
+    def __post_init__(self):
+        self.purchase_order_date = DataUtils.child_created_at(CYMBAL_PETS_START_DATE)
+        rand_days = random.choices(
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            weights=[0.06, 0.09, 0.11, 0.13, 0.15, 0.16, 0.12, 0.10, 0.05, 0.03],
+        )[0]
+        self.purchase_delivery_date = self.purchase_order_date + timedelta(
+            days=rand_days
+        )
+        self.quantity = random.choices(
+            [100, 500, 750, 1000, 3000, 6000, 10000],
+            weights=[0.08, 0.14, 0.21, 0.29, 0.16, 0.08, 0.04],
+        )[0]
+
+
 # ===== GENERATION FUNCTIONS =======================================================
+
+
+def generate_distribution_centers():
+    distribution_centers = []
+    for distribution_center in DataHandling.read_json(
+        bucket_name=BUCKET_NAME, file_name="distribution_centers_data"
+    ):
+        distribution_centers.append(
+            DistributionCenter(
+                distribution_center_id=distribution_center["distribution_center_id"],
+                distribution_center_name=distribution_center["distribution_center_name"],
+                address_city=distribution_center["address_city"],
+                address_state=distribution_center["address_state"],
+                latitude=distribution_center["latitude"],
+                longitude=distribution_center["longitude"],
+            ).__dict__
+        )
+    return distribution_centers
+
+
+def generate_purchase_order_data(
+    num_of_purchase_orders: int,
+    products: list,
+    suppliers: list,
+    distribution_centers: list,
+):
+    purchase_orders = []
+    for _ in range(num_of_purchase_orders):
+        rand_supplier_id = random.choice(suppliers)["supplier_id"]
+        rand_product_id = random.choice(products)["product_id"]
+        rand_distribution_center_id = random.choice(distribution_centers)[
+            "distribution_center_id"
+        ]
+        purchase_orders.append(
+            PurchaseOrder(
+                supplier_id=rand_supplier_id,
+                product_id=rand_product_id,
+                distribution_center_id=rand_distribution_center_id,
+            ).__dict__
+        )
+    return purchase_orders
 
 
 def generate_location_data(country_iso3: str):
@@ -588,8 +665,6 @@ def generate_orders(
 
 #     return order_items
 
-import random
-
 
 def generate_order_items(orders: list, products: list, customers: list):
     order_items = []
@@ -714,6 +789,13 @@ def main(
     print("Generating suppliers data")
     suppliers = generate_suppliers(geo_data=location_data)
     print("Generated " + str(len(suppliers)) + " suppliers data successfully")
+    print("Generating distribution center data")
+    distribution_centers = generate_distribution_centers()
+    print(
+        "Generated "
+        + str(len(distribution_centers))
+        + " distribution centers data successfully"
+    )
     print("Generating customers data")
     customers = generate_customers(
         num_of_customers=num_of_customers, geo_data=location_data
@@ -810,6 +892,17 @@ def main(
         + str(len(order_items))
         + " order items successfully"
     )
+    print("Generate purchase order data")
+    num_of_purchase_orders = (date.today() - CYMBAL_PETS_START_DATE).days * 3
+    purchase_orders = generate_purchase_order_data(
+        num_of_purchase_orders=num_of_purchase_orders,
+        products=products,
+        suppliers=suppliers,
+        distribution_centers=distribution_centers,
+    )
+    print(
+        "Generated " + str(len(purchase_orders)) + " purchase orders data successfully"
+    )
     data_list = {
         "products": products,
         "stores": stores,
@@ -821,6 +914,8 @@ def main(
         "nutritional_data": nutritional_data,
         "employees": employees,
         "pet_profiles": pet_profiles,
+        "distribution_centers": distribution_centers,
+        "purchase_orders": purchase_orders,
     }
     for name, data in data_list.items():
         file_name = f"{name}.json"
