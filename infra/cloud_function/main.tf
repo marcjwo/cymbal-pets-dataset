@@ -46,7 +46,7 @@ resource "google_storage_bucket" "gcf-data-bucket" {
 }
 
 resource "google_storage_bucket_object" "gcf-source-data-object" {
-  for_each = toset(["products_data.json", "stores_data.json", "suppliers_data.json"])
+  for_each = toset(["products_data.json", "stores_data.json", "suppliers_data.json", "distribution_centers_data.json"])
   name     = "data/${each.value}"
   bucket   = google_storage_bucket.gcf-data-bucket.name
   source   = "${path.module}/../../data/${each.value}"
