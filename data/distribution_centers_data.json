@@ -42,7 +42,6 @@
   {
     "distribution_center_id": 6,
     "distribution_center_name": "Cymbal Pets Online Super Center East",
-    "location": "Memphis, TN",
     "address_city": "Memphis",
     "address_state": "Tennessee",
     "latitude": 35.14953,
@@ -53,7 +52,6 @@
     "distribution_center_name": "Cymbal Pets Online Super Center West",
     "address_city": "Las Vegas",
     "address_state": "Nevada",
-    "name": "Las Vegas",
     "latitude": 36.17497,
     "longitude": -115.13722
   }
