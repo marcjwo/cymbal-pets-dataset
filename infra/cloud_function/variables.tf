@@ -22,7 +22,7 @@ variable "dataset_id" {
 
 variable "daily_orders" {
   type    = string
-  default = "2500"
+  default = "2499"
 }
 
 # variable "min_locations" {

@@ -89,9 +89,9 @@ resource "google_cloudfunctions2_function" "default" {
   service_config {
     max_instance_count = 4
     min_instance_count = 0
-    available_memory   = "32Gi"
+    available_memory   = "16Gi"
     timeout_seconds    = 3600
-    available_cpu      = "8"
+    available_cpu      = "4"
     environment_variables = {
       DATASET_ID   = var.dataset_id
       BUCKET_NAME  = google_storage_bucket.gcf-data-bucket.name
