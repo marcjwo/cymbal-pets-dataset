@@ -5,9 +5,10 @@ from datetime import date, datetime, timedelta
 from dataclasses import dataclass, field, InitVar
 from decimal import Decimal
 from itertools import repeat
+import numpy as np
 import requests
-import calendar
 import random
+import math
 
 from google.cloud import bigquery, storage
 from faker import Faker
@@ -176,6 +177,12 @@ class DataUtils:
     #             return round(age)
 
     @staticmethod
+    def calculate_probability(x, midpoint, steepness) -> float:
+        """Calculate probability using sigmoid function"""
+        probability = 1 / (1 + np.exp(-steepness * (x - midpoint)))
+        return probability
+
+    @staticmethod
     def child_created_at(parent_date: date, month_weights: dict = None) -> date:
         if month_weights is None:
             month_weights = DataUtils.SEASONAL_WEIGHTS
@@ -189,13 +196,58 @@ class DataUtils:
         adjusted_weight = month_weights[random_month]
         if random.random() > adjusted_weight:
             return DataUtils.child_created_at(parent_date)  # Retry if not accepted
-
-        # random_time = time(
-        #     random.randint(0, 23), random.randint(0, 59), random.randint(0, 59)
-        # )
-        # created_at_datetime = datetime.combine(random_date, random_time)
-        # return created_at_datetime
         return random_date
+    
+    @staticmethod
+    def enhanced_created_at(parent_date: date, month_weights=None, linear_factor=0.6) -> date:
+        """
+        Generate a random date with a steady linear increase toward present day.
+        
+        Args:
+            parent_date: The starting date
+            month_weights: Dictionary of month weights (1-12 keys with float values)
+            linear_factor: Controls how linear (0) or quadratic (1) the increase is
+            
+        Returns:
+            A date object
+        """
+        if month_weights is None:
+            month_weights = DataUtils.SEASONAL_WEIGHTS
+            
+        end_date = date.today()
+        days_between = (end_date - parent_date).days
+        days_between = max(days_between, 2)
+        
+        # Build a probability array with linear increasing weights
+        # This ensures a steady increase toward today
+        weights = []
+        for i in range(days_between):
+            # Normalize position to 0-1 range
+            position = i / (days_between - 1)
+            
+            # Linear increase with optional quadratic component
+            # linear_factor=0 gives purely linear increase
+            # linear_factor=1 gives quadratic increase
+            weight = position * (1 - linear_factor) + (position ** 2) * linear_factor
+            
+            # Apply a small random jitter to avoid perfect linearity
+            jitter = random.uniform(0.95, 1.05)
+            weights.append(weight * jitter)
+        
+        # Try to find a date that passes seasonal filter
+        for _ in range(3):
+            # Select day based on weights
+            day_index = random.choices(range(days_between), weights=weights)[0]
+            random_date = parent_date + timedelta(days=day_index)
+            
+            # Apply seasonal month weighting
+            month_weight = month_weights[random_date.month]
+            if random.random() <= month_weight:
+                return random_date
+        
+        # If seasonal filtering fails, just use weighted selection directly
+        day_index = random.choices(range(days_between), weights=weights)[0]
+        return parent_date + timedelta(days=day_index)
 
 
 @dataclass
@@ -206,6 +258,7 @@ class Product:
     subcategory: str
     brand: str
     price: float
+    cost: float
     description: str
     image_url: str
     inventory_level: int
@@ -289,7 +342,7 @@ class Employee:
         else:
             self.first_name = fake.first_name_female()
         self.last_name = fake.last_name()
-        self.hire_date = DataUtils.child_created_at(CYMBAL_PETS_START_DATE)
+        self.hire_date = DataUtils.enhanced_created_at(CYMBAL_PETS_START_DATE)
         # print(date.today())
         # print(self.hire_date)
         days_since_hire = (date.today() - self.hire_date).days
@@ -312,7 +365,7 @@ class Order:
     # cymbal_pets_start_date: InitVar[date] = None
 
     def __post_init__(self):
-        self.order_date = DataUtils.child_created_at(CYMBAL_PETS_START_DATE)
+        self.order_date = DataUtils.enhanced_created_at(CYMBAL_PETS_START_DATE)
         self.order_type = random.choices(["Online", "Offline"], weights=[0.61, 0.39])[0]
         if self.order_type == "Offline":
             self.payment_method = random.choices(
@@ -334,10 +387,12 @@ class OrderItem:
     order_item_id: int = field(default_factory=itertools.count(start=1).__next__)
     quantity: int = field(init=False)
     price: InitVar[Decimal] = None
+    cost: InitVar[Decimal] = None
 
-    def __post_init__(self, price: Decimal = None):
+    def __post_init__(self, price: Decimal = None, cost: Decimal = None):
         self.quantity = random.randint(1, 4)
         self.price = self.quantity * price
+        self.cost = self.quantity * cost
 
 
 @dataclass
@@ -397,7 +452,7 @@ class DistributionCenter:
     latitude: float
     longitude: float
 
-
+# Test
 @dataclass
 class PurchaseOrder:
     supplier_id: int
@@ -407,9 +462,11 @@ class PurchaseOrder:
     purchase_order_date: date = field(init=False)
     purchase_delivery_date: date = field(init=False)
     quantity: int = field(init=False)
+    price: InitVar[Decimal] = None
+    cost: InitVar[Decimal] = None
 
-    def __post_init__(self):
-        self.purchase_order_date = DataUtils.child_created_at(CYMBAL_PETS_START_DATE)
+    def __post_init__(self, price: Decimal = None, cost: Decimal = None):
+        self.purchase_order_date = DataUtils.enhanced_created_at(CYMBAL_PETS_START_DATE)
         rand_days = random.choices(
             [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
             weights=[0.06, 0.09, 0.11, 0.13, 0.15, 0.16, 0.12, 0.10, 0.05, 0.03],
@@ -421,6 +478,10 @@ class PurchaseOrder:
             [100, 500, 750, 1000, 3000, 6000, 10000],
             weights=[0.08, 0.14, 0.21, 0.29, 0.16, 0.08, 0.04],
         )[0]
+        self.price = self.quantity * price
+        self.cost = self.quantity * cost
+
+
 
 
 # ===== GENERATION FUNCTIONS =======================================================
@@ -452,8 +513,31 @@ def generate_purchase_order_data(
 ):
     purchase_orders = []
     for _ in range(num_of_purchase_orders):
-        rand_supplier_id = random.choice(suppliers)["supplier_id"]
-        rand_product_id = random.choice(products)["product_id"]
+        # rand_supplier_id = random.choice(suppliers)["supplier_id"]
+        # workaround because ids of supplier doesnt match with products, need to adjust
+        rand_supplier_id = random.randint(101,117)
+        weights = []
+        eligible_products = [
+            p for p in products if p["supplier_id"] == rand_supplier_id
+        ]
+        for product in eligible_products:
+            base_rating = product.get("average_rating", 3)
+            weights.append(base_rating)
+
+            # Normalize weights (ensure they sum to 1 for random.choices)
+        total_weighted_rating = sum(weights)
+        if total_weighted_rating == 0:
+            product_weights = [1 / len(eligible_products)] * len(
+                eligible_products
+            )  # Uniform if all weights are 0
+        else:
+            product_weights = [r / total_weighted_rating for r in weights]
+
+        rand_product = random.choices(eligible_products, weights=product_weights)[0]
+        # rand_product = random.choices(eligible_products)[0]
+        rand_product_id = rand_product["product_id"]
+        rand_product_price = rand_product["price"]
+        rand_product_cost = rand_product["cost"]
         rand_distribution_center_id = random.choice(distribution_centers)[
             "distribution_center_id"
         ]
@@ -462,10 +546,11 @@ def generate_purchase_order_data(
                 supplier_id=rand_supplier_id,
                 product_id=rand_product_id,
                 distribution_center_id=rand_distribution_center_id,
+                price=rand_product_price,
+                cost=rand_product_cost,
             ).__dict__
         )
     return purchase_orders
-
 
 def generate_location_data(country_iso3: str):
     url = "https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/json/countries%2Bstates%2Bcities.json"
@@ -564,6 +649,7 @@ def generate_products():
                 subcategory=product["subcategory"],
                 brand=product["brand"],
                 price=product["price"],
+                cost=product["cost"],
                 description=product["description"],
                 image_url=product["image_url"],
                 inventory_level=product["inventory_level"],
@@ -731,6 +817,7 @@ def generate_order_items(orders: list, products: list, customers: list):
                     order_id=order["order_id"],
                     product_id=rand_product["product_id"],
                     price=rand_product["price"],
+                    cost=rand_product["cost"],
                 ).__dict__
             )
 
