@@ -5,6 +5,7 @@
   { "name": "subcategory", "type": "STRING", "mode": "REQUIRED" },
   { "name": "brand", "type": "STRING", "mode": "REQUIRED" },
   { "name": "price", "type": "FLOAT", "mode": "REQUIRED" },
+  { "name": "cost", "type": "FLOAT", "mode": "REQUIRED" },
   { "name": "description", "type": "STRING", "mode": "REQUIRED" },
   { "name": "image_url", "type": "STRING", "mode": "REQUIRED" },
   { "name": "inventory_level", "type": "INTEGER", "mode": "REQUIRED" },
