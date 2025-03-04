@@ -3,5 +3,6 @@
   { "name": "product_id", "type": "INTEGER", "mode": "REQUIRED" },
   { "name": "order_item_id", "type": "INTEGER", "mode": "REQUIRED" },
   { "name": "quantity", "type": "INTEGER", "mode": "REQUIRED" },
-  { "name": "price", "type": "FLOAT", "mode": "REQUIRED" }
+  { "name": "price", "type": "FLOAT", "mode": "REQUIRED" },
+  { "name": "cost", "type": "FLOAT", "mode": "REQUIRED" }
 ]

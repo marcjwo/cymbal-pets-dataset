@@ -33,5 +33,15 @@
     "name": "quantity",
     "type": "INTEGER",
     "mode": "REQUIRED"
+  },
+  {
+    "name": "price",
+    "type": "FLOAT",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "cost",
+    "type": "FLOAT",
+    "mode": "REQUIRED"
   }
 ]
